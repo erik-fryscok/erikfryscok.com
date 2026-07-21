@@ -1,19 +1,10 @@
-# Personal Website
+# Personal Website Product Brief
 
 Status: active planning
 
-## Repository setup decision
+## Repository context
 
-The initial GitHub repository settings are:
-
-- Owner: `erik-fryscok`
-- Repository: `erikfryscok.com`
-- Visibility: Public
-- README: Enabled
-- `.gitignore`: GitHub’s Node template
-- License: None
-
-The repository is public for discoverability and portfolio value. No license was added because the repository may contain personal content, branding, images, and employer-informed ideas. Revisit licensing once the code/content boundary is clearer.
+This public repository is the durable home for the personal website, its product context, and its delivery history. It has no license while the boundary between reusable code, personal writing, branding, and employer-informed ideas remains unclear. Revisit licensing once those materials are clearly separated.
 
 ## Purpose
 
@@ -53,14 +44,9 @@ Create a professional home base that explains who Erik is, demonstrates useful t
 
 Internal experience can inform projects and articles, but content must be rewritten as generalized patterns, lessons, and architectures. Do not publish employer or client confidential information, proprietary source code, credentials, non-public designs, or internal project details.
 
-## Next actions
+## Delivery tracking
 
-1. Confirm domain availability and purchase the preferred personal-name domain.
-2. Create a public repository (suggested: `erikfryscok.com` or `personal-website`).
-3. Scaffold an Astro minimal project with strict TypeScript and Git.
-4. Add Tailwind CSS.
-5. Build the five-page skeleton and publish a simple first version.
-6. Connect the repository to Cloudflare Pages and set up automatic deployment from `main`.
+Current work, delivery status, and formal release scope are managed in the repository's GitHub Project and milestones. This document records enduring product intent rather than a duplicate task list.
 
 ## Deferred until there is a need
 

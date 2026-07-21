@@ -1,21 +1,18 @@
 # erikfryscok.com
 Personal website and blog focused on engineering leadership, AI-enabled development, automation, and modern software practices.
 
-## Personal Projects & Experiments
-
-This workspace is a durable record for ideas, decisions, experiments, and active personal initiatives. It is intentionally lightweight: use it to capture progress without turning every thought into a project.
-
 ## Current focus
 
-- [Personal website](initiatives/personal-website/README.md) — establish a professional home base for future writing, consulting, products, and selected projects.
+- Establish a professional home base for future writing, consulting, products, and selected projects.
 
-## How this workspace is organized
+## Project tracking
 
-- [`strategy/`](strategy/) — positioning, decision records, and higher-level direction.
-- [`initiatives/`](initiatives/) — active or proposed initiatives, each with its own brief and next actions.
-- [`ideas/`](ideas/) — an opportunity backlog and content ideas that are not commitments yet.
-- [`journal/`](journal/) — optional dated notes, outcomes, and reflections.
+Current work, release scope, and delivery status are maintained in the repository's public GitHub Project and issues. Durable context lives in [the documentation](docs/README.md).
 
-## Working convention
+## Documentation
 
-Capture a meaningful choice in `strategy/decisions.md`. Turn a promising idea into an initiative only when it has a concrete next action. Keep the opportunity backlog broad; it is a source of options, not a to-do list.
+Read [the documentation index](docs/README.md) for product intent, strategy, decisions, ideas, journal entries, and the project lifecycle.
+
+## Releases
+
+User-visible changes are recorded in [CHANGELOG.md](CHANGELOG.md). Formal product checkpoints are published as [GitHub Releases](https://github.com/erik-fryscok/erikfryscok.com/releases); ordinary merges may deploy continuously without becoming a formal release.
