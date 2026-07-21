@@ -1,0 +1,55 @@
+name: Research, content, or general work
+description: Capture discovery, writing, documentation, maintenance, or other work.
+title: "[Work]: "
+body:
+  - type: dropdown
+    id: work_type
+    attributes:
+      label: Work type
+      description: Add the matching `type:` label after creation.
+      options:
+        - Research
+        - Content
+        - Documentation
+        - Chore
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What question will be answered or what result will exist when this is done?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Completion criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Documentation and context
+      description: Link relevant documentation, decisions, experiments, or related issues.
+  - type: dropdown
+    id: horizon
+    attributes:
+      label: Planning horizon
+      options:
+        - Now
+        - Next
+        - Later
+        - Icebox
+    validations:
+      required: true
+  - type: checkboxes
+    id: confidentiality
+    attributes:
+      label: Content safety
+      options:
+        - label: This item contains no employer, client, credential, proprietary, or non-public material.
+          required: true

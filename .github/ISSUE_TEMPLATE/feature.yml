@@ -1,0 +1,58 @@
+name: Initiative or feature
+description: Propose or define a meaningful product outcome.
+title: "[Feature]: "
+labels:
+  - "type:feature"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for a feature or a larger initiative. Add `type:initiative` after creation when this issue groups related sub-issues.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What user or project outcome will this create, and why does it matter?
+      placeholder: A concise problem statement and intended result.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and acceptance criteria
+      description: Describe the expected behavior or evidence that the work is complete.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Documentation and context
+      description: Link relevant documentation, decisions, experiments, or related issues.
+      placeholder: docs/product/brief.md
+  - type: dropdown
+    id: horizon
+    attributes:
+      label: Planning horizon
+      options:
+        - Now
+        - Next
+        - Later
+        - Icebox
+    validations:
+      required: true
+  - type: input
+    id: release
+    attributes:
+      label: Proposed release
+      description: Name a milestone only when this belongs in a known formal release.
+      placeholder: v0.2.0 – Site preview
+  - type: checkboxes
+    id: confidentiality
+    attributes:
+      label: Content safety
+      options:
+        - label: This issue contains no employer, client, credential, proprietary, or non-public material.
+          required: true
