@@ -7,7 +7,7 @@ Personal website and blog focused on engineering leadership, AI-enabled developm
 
 ## Project tracking
 
-Current work, release scope, and delivery status are maintained in the repository's public GitHub Project and issues. Durable context lives in [the documentation](docs/README.md).
+Current work, release scope, and delivery status are maintained in the [public GitHub Project](https://github.com/users/erik-fryscok/projects/73) and repository issues. Durable context lives in [the documentation](docs/README.md).
 
 ## Documentation
 
