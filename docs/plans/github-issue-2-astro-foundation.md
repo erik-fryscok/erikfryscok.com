@@ -2,6 +2,8 @@
 
 Source: [GitHub issue #2](https://github.com/erik-fryscok/erikfryscok.com/issues/2)
 
+Repository path: `docs/plans/github-issue-2-astro-foundation.md`
+
 Implementation branch: `erikf/issue-2-astro-typescript-tailwind-foundation`
 
 ## Outcome
@@ -37,6 +39,30 @@ environment. The framework choices follow the current
 [Astro installation](https://docs.astro.build/en/install-and-setup/),
 [TypeScript](https://docs.astro.build/en/guides/typescript/), and
 [Tailwind styling](https://docs.astro.build/en/guides/styling/) guidance.
+
+## Codex model and reasoning recommendation
+
+Use `gpt-5.6-sol` with `high` reasoning effort for the initial implementation.
+This work is bounded, but it establishes the shared application foundation,
+merges generated framework files into an existing repository, depends on
+version-sensitive integrations, and requires validation across code,
+configuration, documentation, and public-repository safety.
+
+`gpt-5.6-sol` is the current frontier-capability model for complex reasoning
+and coding. `high` gives the implementation enough room to inspect generated
+output, reconcile it with repository conventions, and diagnose integration or
+validation failures without defaulting to the highest-cost effort.
+
+Do not default to `max`; reserve it for a specific unresolved, quality-first
+problem after `high` proves insufficient. Use `medium` for later routine,
+well-understood maintenance or deterministic validation reruns where deeper
+reasoning is unlikely to change the outcome.
+
+This recommendation was verified against the official
+[GPT-5.6 model guidance](https://developers.openai.com/api/docs/guides/latest-model)
+and [GPT-5.6 Sol model reference](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
+on 2026-07-23. Recheck the available Codex model lineup before execution if
+these names or effort levels are no longer available.
 
 ## Implementation approach
 
