@@ -36,6 +36,35 @@ already exists on
 `erikf/issue-2-astro-typescript-tailwind-foundation` and should not be
 recreated.
 
+## Codex model and reasoning recommendation
+
+Use `gpt-5.6-sol` as the primary model for the initiative. It is the current
+frontier-capability model in the GPT-5.6 family and is the best fit for
+multi-step coding work that combines planning, implementation, tool use, and
+validation.
+
+Use these settings for each class of work:
+
+| Work | Model | Reasoning effort | Rationale |
+| --- | --- | --- | --- |
+| Initiative orchestration and child-issue planning | `gpt-5.6-sol` | `high` | Resolve scope, dependencies, boundaries, and acceptance criteria before implementation. |
+| Issues #2, #3, and #5 | `gpt-5.6-sol` | `high` | Protect the shared application and deployment foundations while checking implementation trade-offs and edge cases. |
+| Issue #4 | `gpt-5.6-sol` | `medium` | Content integration is well bounded once #3 establishes the page contract; raise to `high` if positioning or privacy decisions remain ambiguous. |
+| Issues #6 and #7 | `gpt-5.6-sol` | `xhigh` | Use deeper reasoning for DNS, production cutover, accessibility, SEO, launch validation, and release closeout. |
+| Bounded read-heavy helpers | `gpt-5.6-terra` | `medium` | Favor speed and efficiency for repository scans, documentation review, test-log analysis, and other work that returns a distilled result to the primary agent. |
+
+Do not default to `max`: reserve it for a specific unresolved, quality-first
+problem after `xhigh` proves insufficient. Keep write ownership with the
+primary `gpt-5.6-sol` agent and use `gpt-5.6-terra` only for independent
+read-heavy support work so parallel execution does not create conflicting
+changes.
+
+These recommendations were verified against the official
+[GPT-5.6 model guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6)
+and [Codex subagent guidance](https://learn.chatgpt.com/docs/agent-configuration/subagents)
+on 2026-07-23. Recheck the available Codex model lineup before starting a
+future execution wave if these names or effort levels are no longer available.
+
 ## Dependency graph
 
 ```mermaid
