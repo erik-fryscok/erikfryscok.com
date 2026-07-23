@@ -13,6 +13,10 @@ This directory is the durable, versioned context for the website. It is written 
 - [Decision log](strategy/decisions.md) — choices that should not need to be rediscovered.
 - [Journal](journal/README.md) — dated experiments, outcomes, and reflections.
 
+## Implementation plans
+
+- [GitHub issue #1: personal website launch](plans/github-issue-1-launch-personal-website.md) — initiative sequencing, dependencies, concurrency, and launch gates.
+
 ## Opportunities and content
 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.
