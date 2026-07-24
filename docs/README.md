@@ -13,6 +13,10 @@ This directory is the durable, versioned context for the website. It is written 
 - [Decision log](strategy/decisions.md) — choices that should not need to be rediscovered.
 - [Journal](journal/README.md) — dated experiments, outcomes, and reflections.
 
+## Implementation plans
+
+- [GitHub issue #2: Astro, TypeScript, and Tailwind foundation](plans/github-issue-2-astro-foundation.md) — the implementation approach and validation contract for the initial development foundation.
+
 ## Opportunities and content
 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.
