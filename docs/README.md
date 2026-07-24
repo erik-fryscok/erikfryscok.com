@@ -15,6 +15,10 @@ This directory is the durable, versioned context for the website. It is written 
 
 ## Implementation plans
 
+- [GitHub issue #1: personal website launch](plans/github-issue-1-launch-personal-website.md) — initiative sequencing, dependencies, concurrency, and launch gates.
+
+## Implementation plans
+
 - [GitHub issue #2: Astro, TypeScript, and Tailwind foundation](plans/github-issue-2-astro-foundation.md) — the implementation approach and validation contract for the initial development foundation.
 
 ## Opportunities and content
