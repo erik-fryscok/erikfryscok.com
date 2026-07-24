@@ -1,57 +1,61 @@
-# Model selection for planning tasks
+# Local model selection
 
-Cline cannot switch its own model mid-task — the model is chosen in the UI's model selector and provider settings. When a task enters planning, proactively **recommend** the best model/provider up front, then continue planning with whatever model is active. Do not block on the recommendation.
+Cline cannot switch its own model mid-task. The model is selected in Cline's
+provider settings, while the resident llama.cpp model is controlled by the
+private `local-ai-lab`. Recommend a role alias before substantial work, then
+continue with the active model. Do not block on the recommendation.
 
-## Core constraint: direct creator APIs, pay-per-use only
+## Baseline
 
-This project tracks cost per call. Recommend only models reached via the **creator's own direct API** — configured in Cline's provider settings with that creator's API key and base URL. Do **not** recommend:
+Use the OpenAI-compatible localhost endpoint:
 
-- **Subscription / plan-based access** — e.g. Cline Pass, Cline usage-based billing, or any aggregator that bundles many models behind one subscription. These do not expose clean per-call cost.
-- **Third-party hosters of open-weight models** — e.g. Together, Groq, Cerebras, Fireworks, Replicate. The hoster is not the model's creator, which breaks the "direct to creator" rule and the per-call cost trail.
+```text
+http://127.0.0.1:8080/v1
+```
 
-Open-weight models are allowed **only when their creator also offers a direct pay-per-use API** to them (e.g. DeepSeek, GLM).
+Use only aliases that the private lab currently marks `core`. Local open-weight
+inference is the baseline and requires no paid API. Never add credentials,
+private lab paths, raw benchmark output, or machine-specific configuration to
+this public repository.
 
-## Provider catalog — by family and tier, not by version
+## Role routing
 
-The model landscape changes fast. Always recommend the **latest available** model in the chosen family and tier, and confirm the current model ID against the provider's docs when there is any doubt. Never pin a specific version as if it were permanent.
+Choose by task demands:
 
-| Creator | Direct API (base URL) | Model family | Planning strengths |
-| --- | --- | --- | --- |
-| Anthropic | `api.anthropic.com` | Claude (flagship → standard → fast tiers) | Deep reasoning, agentic coding, long context, careful planning |
-| OpenAI | `api.openai.com` (platform.openai.com) | GPT + o-series (the family behind ChatGPT) | Broad reasoning, tool use, structured planning |
-| Google | Gemini API (`generativelanguage.googleapis.com`) / Google AI Studio | Gemini (flagship/Pro → Flash) | Very long context, multimodal, fast Flash tier |
-| Zhipu / z.ai | z.ai (`open.bigmodel.cn`) | GLM | Cost-effective strong reasoning |
-| DeepSeek | `api.deepseek.com` | DeepSeek (incl. reasoning models) | Very cost-effective reasoning and code |
-| Mistral | `api.mistral.ai` | Mistral / Codestal | Cost-effective, strong on code |
+| Task profile | Local role alias |
+| --- | --- |
+| Summaries, documentation, repository exploration, and bounded mechanical edits | `fast` |
+| Normal feature implementation, bug fixes, tests, and moderate refactors | `coder` |
+| Ambiguous planning, difficult debugging, architecture, and multi-step reasoning | `reason` |
+| Skeptical correctness, security, and final implementation review | `review` |
+| Screenshot and UI analysis | `vision`, only after its multimodal runtime gate passes |
 
-A provider may be added to this catalog only if it meets the same gate: it **created** the model **and** offers a **direct pay-per-use API**. Re-evaluate the catalog whenever a creator's lineup changes.
+The role resolves to a validated model in the private lab. Do not pin this
+public rule to a model family or parameter count; role winners can change as
+experiments produce better evidence.
 
-## Task-based routing — pick tier/provider by reasoning load
+## Escalation
 
-Match the model to the task's **reasoning load**, not its file count.
+Escalate because of measured failure, not provider price or parameter count:
 
-| Task profile | Suggested tier (latest model in tier) | Provider families to draw from |
-| --- | --- | --- |
-| Architecture, multi-system design, security, migrations, ambiguous/under-specified requirements | **Flagship / reasoning** — strongest available, with high or extended thinking | Anthropic Claude (flagship), OpenAI GPT/o-series (flagship), Google Gemini (flagship/Pro), DeepSeek (reasoning), GLM (reasoning) |
-| Single feature, moderate investigation, scope mostly clear | **Standard / mid** | Anthropic Claude (standard), Google Gemini (Pro), OpenAI (standard), GLM |
-| Refining an already-validated plan, or a small well-scoped change | **Fast / value**, or skip heavy planning and use Act mode | Anthropic Claude (fast), Google Gemini (Flash), Mistral, DeepSeek |
+- an acceptance criterion is missed;
+- a tool call is malformed or not executed;
+- the model repeats a failed approach;
+- required context exceeds the active profile;
+- automated validation fails and the model cannot repair it;
+- a blind review finds a material correctness or security issue.
 
-## Planning-specific settings — recommend once, not every task
+Start a fresh conversation and clean worktree when comparing another role.
+Return to a smaller role for bounded cleanup or documentation after the hard
+part is resolved.
 
-- Enable **"Use different models for Plan and Act"** in Cline Settings: a flagship/reasoning model for Plan, a fast/value model for Act.
-- For large, multi-file, or architecturally significant tasks, recommend the **`/deep-planning`** slash command.
-- Raise the thinking level (**high** / **xhigh**) for architectural decisions, security analysis, and multi-step planning.
+## Evidence
 
-## How to phrase the recommendation
+For series experiments, keep the prompt, Git base, agent, runtime, context,
+quantization, validation commands, elapsed time, interventions, and outcome
+constant or explicitly recorded. A faster failing result never outranks a
+slower passing result.
 
-- Make it **up front**, before planning starts.
-- Name the **provider family + tier**, then the **specific latest model ID** in that tier; note the version may change and recommend verifying the current ID.
-- State the **direct API route** to configure (creator + base URL) and that it is pay-per-use.
-- When relevant, note the **cost trade-off** versus alternatives (reasoning/flagship models cost more; value tiers save on routine work).
-
-## Don't
-
-- Don't recommend subscription, usage-billing-wrapper, or third-party-hosted open-weight routes.
-- Don't pin specific model versions as if they were permanent.
-- Don't suggest a model after planning has begun — recommend before, then proceed.
-- Don't try to switch models yourself; the user controls the model selector.
+Raw benchmark state stays in the private lab. Only sanitized summaries,
+release-intended prompts, accepted diffs, validation evidence, and generalized
+lessons belong here.

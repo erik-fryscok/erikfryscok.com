@@ -11,6 +11,7 @@ These topics reinforce the working positioning: engineering leadership plus prac
 - Production AI agents: where reliability work really goes
 - Choosing the right coding agent for a team
 - Local LLMs on Apple Silicon
+- Local Models, Real Software: can local AI ship accepted work on one MacBook?
 
 ## Delivery, infrastructure, and security
 
