@@ -9,3 +9,4 @@ The site may deploy continuously. This changelog records meaningful product rele
 ### Changed
 
 - Established the documentation and project-lifecycle foundation for the site.
+- Added Astro, TypeScript, and Tailwind CSS foundation (issue #2).

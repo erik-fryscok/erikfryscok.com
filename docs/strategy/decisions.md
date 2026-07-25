@@ -8,7 +8,7 @@ Decisions are recorded here when they shape direction or avoid revisiting the sa
 | 2026-07-20 | Use a personal-name domain direction, with `erikfryscok.com` as the preferred option. | A personal brand stays flexible while consulting, products, and career goals evolve. Domain availability and purchase are still pending. | Proposed |
 | 2026-07-20 | Make the personal website the first concrete initiative. | It is a professional home base that can support consulting, writing, products, and future projects. | Active |
 | 2026-07-20 | Keep the first site release narrow: Home, About, Writing, Projects, and Contact. | A credible live foundation matters more than an elaborate but empty site. | Active |
-| 2026-07-20 | Use Astro with TypeScript and Tailwind CSS; target Cloudflare Pages for hosting. | The stack is fast, SEO-friendly, content-friendly, and matches existing cloud experience. | Proposed |
+| 2026-07-20 | Use Astro with TypeScript and Tailwind CSS; target Cloudflare Pages for hosting. | The stack is fast, SEO-friendly, content-friendly, and matches existing cloud experience. | Chosen |
 | 2026-07-20 | Delay newsletters, courses, product storefronts, search, RSS, and comments until the core site and useful content exist. | These are expansion paths, not launch requirements. | Active |
 | 2026-07-20 | Create `erikfryscok.com` as a public GitHub repository owned by `erik-fryscok`. | Public visibility supports discoverability, credibility, and future collaboration around the personal website. | Chosen |
 | 2026-07-20 | Initialize the repository with a README and the GitHub Node `.gitignore` template. | The README gives the project an immediate public entry point; the Node template matches the planned Astro/TypeScript toolchain. | Chosen |

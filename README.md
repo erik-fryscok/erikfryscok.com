@@ -13,6 +13,17 @@ Current work, release scope, and delivery status are maintained in the [public G
 
 Read [the documentation index](docs/README.md) for product intent, strategy, decisions, ideas, journal entries, and the project lifecycle.
 
+## Development
+
+The following npm scripts are available for local development:
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Astro development server. |
+| `npm run check` | Run Astro and TypeScript diagnostics. |
+| `npm run build` | Run diagnostics then create a production build. |
+| `npm run preview` | Serve the production build locally for verification. |
+
 ## Releases
 
 User-visible changes are recorded in [CHANGELOG.md](CHANGELOG.md). Formal product checkpoints are published as [GitHub Releases](https://github.com/erik-fryscok/erikfryscok.com/releases); ordinary merges may deploy continuously without becoming a formal release.
