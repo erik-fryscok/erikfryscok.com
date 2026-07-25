@@ -59,3 +59,20 @@ slower passing result.
 Raw benchmark state stays in the private lab. Only sanitized summaries,
 release-intended prompts, accepted diffs, validation evidence, and generalized
 lessons belong here.
+
+## Default Models
+
+Each role alias maps to a default model in the private lab. These can change as
+models graduate through the admission gate or retire. Use role aliases rather than
+model names in Cline requests; the lab routes requests automatically.
+
+| Role alias | Default model | Purpose |
+| --- | --- | --- |
+| `coder` | `qwen3.6-35b-a3b` | Qwen3.6 35B-A3B Q5_K_M, loaded at startup |
+| `reason` | `reason-27b` | Qwen3.6 27B Q5_K_M, loaded on demand |
+| `review` | `gpt-oss-120b` | Flagship reasoning and skeptical review |
+| `fast` | `fast-9b` | Qwen3.5 9B Q5_K_M, loaded on demand |
+| `vision` | `gemma-4-12b` | Multimodal UI and screenshot analysis candidate |
+| `embedding` | `embed-4b` | Qwen3 Embedding 4B Q5_K_M |
+
+To inspect the current catalog, run `./scripts/lab catalog` in the lab repository.
