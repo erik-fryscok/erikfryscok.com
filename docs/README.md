@@ -26,6 +26,8 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #11: Home page](plans/github-issue-11-home-page.md) — hero section, introduction, selected work grid, and contact CTA.
 
+- [GitHub issue #12: About page](superpowers/plans/2026-07-25-about-page.md) — About page with professional narrative, engineering philosophy, leadership approach, and interests.
+
 - [GitHub issue #15: Contact page](superpowers/plans/2026-07-25-contact-page.md) — shared BaseLayout component and Contact page with email, GitHub, and LinkedIn links.
 
 ## Opportunities and content

@@ -11,6 +11,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 - Home page with hero section, introduction, selected work grid, and contact CTA (issue #11).
 - Placeholder pages for About, Writing, and Projects with shared BaseLayout.
 - Cloudflare Pages preview deployment for pre-launch review.
+- About page with professional narrative, engineering philosophy, leadership approach, and interests (issue #12).
 
 ### Changed
 
