@@ -1,5 +1,10 @@
 # Agent Instructions
 
+## GitHub context
+
+- **Repository:** erikfryscok.com
+- **Owner:** erik-fryscok
+
 ## Before making changes
 
 1. Read [docs/README.md](docs/README.md), then the product brief and any documentation linked by the active GitHub issue.

@@ -27,3 +27,13 @@ The following npm scripts are available for local development:
 ## Releases
 
 User-visible changes are recorded in [CHANGELOG.md](CHANGELOG.md). Formal product checkpoints are published as [GitHub Releases](https://github.com/erik-fryscok/erikfryscok.com/releases); ordinary merges may deploy continuously without becoming a formal release.
+
+## Deployment
+
+This site is hosted on [Cloudflare Pages](https://pages.cloudflare.com/). The production URL is:
+
+```
+https://erikfryscok.pages.dev
+```
+
+Preview deployments from feature branches are available through the Cloudflare Pages dashboard. See [the deployment documentation](docs/development/deployment.md) for build configuration and the preview workflow.
