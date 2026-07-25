@@ -22,6 +22,8 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #5: Cloudflare Pages preview deployment](superpowers/plans/2026-07-25-cloudflare-pages-preview.md) — preview deployment configuration and documentation.
 
+- [GitHub issue #13: Writing page](plans/github-issue-13-writing-page.md) — Writing landing page with placeholder article list and future-ready content structure.
+
 - [GitHub issue #15: Contact page](superpowers/plans/2026-07-25-contact-page.md) — shared BaseLayout component and Contact page with email, GitHub, and LinkedIn links.
 
 ## Opportunities and content
