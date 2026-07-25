@@ -9,6 +9,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 ### Added
 
 - Cloudflare Pages preview deployment for pre-launch review.
+- About page with professional narrative, engineering philosophy, leadership approach, and interests (issue #12).
 
 ### Changed
 
