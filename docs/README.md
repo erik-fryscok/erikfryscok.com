@@ -11,13 +11,12 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [Positioning](strategy/positioning.md) — audience, working message, and principles.
 - [Decision log](strategy/decisions.md) — choices that should not need to be rediscovered.
+- [Local Models, Real Software](strategy/local-models-real-software.md) — the local-AI series promise, methodology, scoreboard, and publication boundaries.
 - [Journal](journal/README.md) — dated experiments, outcomes, and reflections.
 
 ## Implementation plans
 
 - [GitHub issue #1: personal website launch](plans/github-issue-1-launch-personal-website.md) — initiative sequencing, dependencies, concurrency, and launch gates.
-
-## Implementation plans
 
 - [GitHub issue #2: Astro, TypeScript, and Tailwind foundation](plans/github-issue-2-astro-foundation.md) — the implementation approach and validation contract for the initial development foundation.
 
