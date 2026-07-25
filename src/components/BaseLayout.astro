@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Erik Fryscok — software engineering leadership, AI-enabled development, and modern practices." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-white text-gray-900 flex flex-col">
+    <header class="border-b border-gray-200">
+      <nav class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between" aria-label="Main navigation">
+        <a href="/" class="text-lg font-semibold text-gray-900 hover:text-gray-600 transition-colors">
+          erikfryscok
+        </a>
+        <ul class="flex gap-6 list-none">
+          <li><a href="/" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Home</a></li>
+          <li><a href="/about" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a></li>
+          <li><a href="/writing" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Writing</a></li>
+          <li><a href="/contact" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+      <slot />
+    </main>
+    <footer class="border-t border-gray-200">
+      <div class="max-w-3xl mx-auto px-4 py-4 text-center text-sm text-gray-500">
+        &copy; {new Date().getFullYear()} Erik Fryscok. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
