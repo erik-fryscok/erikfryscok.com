@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact — Erik Fryscok">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Get in Touch</h1>
+    <p class="text-gray-700 mb-8">
+      I'm always interested in hearing about new opportunities, collaborations,
+      or just a good conversation about software engineering. Feel free to reach
+      out through any of the channels below.
+    </p>
+
+    <div class="space-y-4">
+      <!-- Email Card -->
+      <div class="border border-gray-200 rounded-lg p-6">
+        <h2 class="text-lg font-semibold mb-2">Email</h2>
+        <p class="text-gray-600 mb-3">
+          The best way to reach me is by email. I typically respond within a
+          business day.
+        </p>
+        <a
+          href="mailto:hello@erikfryscok.com"
+          class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+        >
+          hello@erikfryscok.com
+        </a>
+      </div>
+
+      <!-- GitHub Card -->
+      <div class="border border-gray-200 rounded-lg p-6">
+        <h2 class="text-lg font-semibold mb-2">GitHub</h2>
+        <p class="text-gray-600 mb-3">
+          Check out my open-source projects and contributions.
+        </p>
+        <a
+          href="https://github.com/erik-fryscok"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+        >
+          github.com/erik-fryscok
+        </a>
+      </div>
+
+      <!-- LinkedIn Card -->
+      <div class="border border-gray-200 rounded-lg p-6">
+        <h2 class="text-lg font-semibold mb-2">LinkedIn</h2>
+        <p class="text-gray-600 mb-3">
+          Connect with me professionally or view my career history.
+        </p>
+        <a
+          href="https://www.linkedin.com/in/erikfryscok"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+        >
+          linkedin.com/in/erikfryscok
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
