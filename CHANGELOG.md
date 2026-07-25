@@ -13,6 +13,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 - Cloudflare Pages preview deployment for pre-launch review.
 - About page with professional narrative, engineering philosophy, leadership approach, and interests (issue #12).
 - Projects page with curated case study cards (issue #14).
+- Type declaration for `key` prop in Astro templates to support `.map()` reconciliation.
 
 ### Changed
 
