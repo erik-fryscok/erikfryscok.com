@@ -29,6 +29,10 @@ This directory is the durable, versioned context for the website. It is written 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.
 - [Content backlog](ideas/content-backlog.md) — prompts for future public material, not a publication schedule.
 
+## Development
+
+- [Cloudflare Pages preview deployment](development/deployment.md) — build configuration, preview workflow, and local preview commands.
+
 ## Conventions
 
 Keep durable context in this directory. Track active work, dependencies, dates, and release scope in GitHub. See the [project lifecycle](project-lifecycle.md) before creating new planning material.

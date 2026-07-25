@@ -6,6 +6,10 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 ## Unreleased
 
+### Added
+
+- Cloudflare Pages preview deployment for pre-launch review.
+
 ### Changed
 
 - Established the documentation and project-lifecycle foundation for the site.
