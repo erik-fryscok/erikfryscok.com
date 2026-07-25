@@ -24,6 +24,8 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #13: Writing page](plans/github-issue-13-writing-page.md) — Writing landing page with placeholder article list and future-ready content structure.
 
+- [GitHub issue #11: Home page](plans/github-issue-11-home-page.md) — hero section, introduction, selected work grid, and contact CTA.
+
 - [GitHub issue #15: Contact page](superpowers/plans/2026-07-25-contact-page.md) — shared BaseLayout component and Contact page with email, GitHub, and LinkedIn links.
 
 ## Opportunities and content

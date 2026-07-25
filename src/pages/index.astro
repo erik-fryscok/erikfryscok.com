@@ -1,8 +1,91 @@
 ---
-// Import global Tailwind CSS
-import "../styles/global.css";
+import BaseLayout from "../components/BaseLayout.astro";
 ---
-<div class="p-8 text-center">
-  <h1 class="text-4xl font-bold">Welcome to Erik's site</h1>
-  <p class="mt-4 text-lg">Tailwind CSS is working!</p>
-</div>
+
+<BaseLayout title="Erik Fryscok — Software Engineering Leadership">
+  <!-- Hero Section -->
+  <section class="mb-16">
+    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+      Building better software teams with AI, automation, and modern engineering practices.
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-gray-600 max-w-3xl">
+      I'm a software development team lead focused on engineering leadership,
+      AI-enabled development, cloud infrastructure, documentation, and practical
+      systems that help teams work more effectively.
+    </p>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-4">About</h2>
+    <p class="text-gray-700 leading-relaxed max-w-3xl">
+      I help engineering teams ship better software through clear processes,
+      modern tooling, and thoughtful leadership. My work spans team building,
+      technical strategy, and hands-on development — with a particular interest
+      in how AI and automation can amplify engineering effectiveness.
+    </p>
+    <a
+      href="/about"
+      class="inline-block mt-4 text-blue-600 hover:text-blue-800 hover:underline transition-colors font-medium"
+    >
+      Learn more about my background &rarr;
+    </a>
+  </section>
+
+  <!-- Selected Work Section -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Selected Work</h2>
+    <div class="grid gap-6 sm:grid-cols-2">
+      <!-- Writing Card -->
+      <a
+        href="/writing"
+        class="group block border border-gray-200 rounded-lg p-6 hover:border-gray-400 hover:shadow-md transition-all"
+      >
+        <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+          Writing
+        </h3>
+        <p class="mt-2 text-gray-600">
+          Articles and thoughts on software engineering, AI-enabled development,
+          and modern practices.
+        </p>
+        <span class="inline-block mt-4 text-blue-600 group-hover:text-blue-800 transition-colors">
+          Read more &rarr;
+        </span>
+      </a>
+
+      <!-- Projects Card -->
+      <a
+        href="/projects"
+        class="group block border border-gray-200 rounded-lg p-6 hover:border-gray-400 hover:shadow-md transition-all"
+      >
+        <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+          Projects
+        </h3>
+        <p class="mt-2 text-gray-600">
+          Selected projects and case studies demonstrating practical engineering
+          and systems thinking.
+        </p>
+        <span class="inline-block mt-4 text-blue-600 group-hover:text-blue-800 transition-colors">
+          View projects &rarr;
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact CTA Section -->
+  <section class="mb-8">
+    <div class="border border-gray-200 rounded-lg p-8 bg-gray-50">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-3">Let's Connect</h2>
+      <p class="text-gray-700 mb-6 max-w-2xl">
+        I'm always interested in hearing about new opportunities, collaborations,
+        or just a good conversation about software engineering.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+</BaseLayout>
