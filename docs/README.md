@@ -32,6 +32,8 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #14: Projects page](plans/github-issue-14-projects-page.md) — case study cards, curated project layout, and navigation integration.
 
+- [GitHub issue #22: Fix ProjectCard CompilerError](superpowers/plans/2026-07-25-fix-projectcard-compiler-error.md) — remove invalid @ts-expect-error comment blocking the Projects page.
+
 ## Opportunities and content
 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.
