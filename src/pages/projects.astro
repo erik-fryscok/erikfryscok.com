@@ -1,12 +1,88 @@
 ---
 import BaseLayout from "../components/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+interface ProjectLink {
+  label: string;
+  href: string;
+}
+
+interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  outcomes: string[];
+  links: ProjectLink[];
+}
+
+const projects: Project[] = [
+  {
+    title: "Local AI Infrastructure for Software Teams",
+    description:
+      "A reference architecture for running open-weight AI models on local hardware to support code review, documentation generation, and developer tooling without sending sensitive code to external APIs.",
+    technologies: ["Rust", "Python", "Docker", "llama.cpp", "vLLM"],
+    outcomes: [
+      "Reduced dependency on external AI APIs for internal tooling",
+      "Demonstrated viable local inference for code completion and review",
+      "Published open reference implementations for community adoption",
+    ],
+    links: [
+      { label: "Documentation", href: "/writing" },
+      { label: "Source", href: "https://github.com/erik-fryscok" },
+    ],
+  },
+  {
+    title: "Engineering Team Automation Toolkit",
+    description:
+      "A collection of reusable automation patterns for software teams — from CI/CD pipeline templates to documentation-as-code workflows that reduce operational overhead and improve consistency.",
+    technologies: ["TypeScript", "GitHub Actions", "Markdown", "Bash"],
+    outcomes: [
+      "Standardized onboarding across multiple teams",
+      "Reduced repetitive manual tasks by automating common workflows",
+      "Improved documentation quality through structured templates",
+    ],
+    links: [
+      { label: "Case Study", href: "/writing" },
+      { label: "Examples", href: "https://github.com/erik-fryscok" },
+    ],
+  },
+  {
+    title: "Cloud Infrastructure Migration Framework",
+    description:
+      "A structured approach for migrating legacy monolithic applications to cloud-native architectures using infrastructure-as-code, containerization, and gradual strangler-fig patterns.",
+    technologies: ["Terraform", "Kubernetes", "AWS", "Go", "Helm"],
+    outcomes: [
+      "Enabled zero-downtime migration for production services",
+      "Reduced infrastructure costs through right-sizing and auto-scaling",
+      "Established repeatable migration playbooks for future projects",
+    ],
+    links: [
+      { label: "Architecture Notes", href: "/writing" },
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Projects — Erik Fryscok">
-  <div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6">Projects</h1>
-    <p class="text-gray-700 mb-4">
-      Selected projects and case studies. Content coming soon.
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-3">Projects</h1>
+    <p class="text-gray-700 mb-10 max-w-2xl">
+      A curated selection of projects that demonstrate practical approaches to
+      engineering leadership, AI-enabled development, and modern infrastructure.
+      These are case studies focused on outcomes and patterns rather than
+      comprehensive repository listings.
     </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          technologies={project.technologies}
+          outcomes={project.outcomes}
+          links={project.links}
+        />
+      ))}
+    </div>
   </div>
 </BaseLayout>

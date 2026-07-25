@@ -30,6 +30,8 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #15: Contact page](superpowers/plans/2026-07-25-contact-page.md) — shared BaseLayout component and Contact page with email, GitHub, and LinkedIn links.
 
+- [GitHub issue #14: Projects page](plans/github-issue-14-projects-page.md) — case study cards, curated project layout, and navigation integration.
+
 ## Opportunities and content
 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.

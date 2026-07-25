@@ -12,6 +12,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 - Placeholder pages for About, Writing, and Projects with shared BaseLayout.
 - Cloudflare Pages preview deployment for pre-launch review.
 - About page with professional narrative, engineering philosophy, leadership approach, and interests (issue #12).
+- Projects page with curated case study cards (issue #14).
 
 ### Changed
 
