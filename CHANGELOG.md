@@ -9,6 +9,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 ### Added
 
 - Cloudflare Pages preview deployment for pre-launch review.
+- Projects page with curated case study cards (issue #14).
 
 ### Changed
 
