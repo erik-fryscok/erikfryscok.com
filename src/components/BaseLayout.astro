@@ -33,11 +33,13 @@ const { title } = Astro.props;
         if (isOpen) {
           mobileMenu.classList.remove('hidden');
           mobileMenu.classList.add('flex', 'flex-col');
+          toggleButton.classList.add('hidden');
           menuIconOpen.classList.add('hidden');
           menuIconClose.classList.remove('hidden');
         } else {
           mobileMenu.classList.add('hidden');
           mobileMenu.classList.remove('flex', 'flex-col');
+          toggleButton.classList.remove('hidden');
           menuIconOpen.classList.remove('hidden');
           menuIconClose.classList.add('hidden');
         }
@@ -45,7 +47,7 @@ const { title } = Astro.props;
       
       // Click outside closes menu
       document.addEventListener('click', (e) => {
-        if (isOpen && !mobileMenu.contains(e.target) && !toggleButton.contains(e.target)) {
+        if (isOpen && !toggleButton.classList.contains('hidden') && !mobileMenu.contains(e.target)) {
           toggleButton.click();
         }
       });
@@ -61,7 +63,7 @@ const { title } = Astro.props;
       const navLinks = mobileMenu.querySelectorAll('a');
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
-          if (isOpen) {
+          if (isOpen && !toggleButton.classList.contains('hidden')) {
             toggleButton.click();
           }
         });
