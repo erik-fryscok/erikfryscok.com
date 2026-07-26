@@ -6,6 +6,10 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 ## Unreleased
 
+### Fixed
+
+- Mobile navigation overflow: added hamburger menu toggle with responsive behavior, overlay and keyboard support (issue #25).
+
 ### Added
 
 - Home page with hero section, introduction, selected work grid, and contact CTA (issue #11).
