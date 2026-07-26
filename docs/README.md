@@ -34,6 +34,9 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #22: Fix ProjectCard CompilerError](superpowers/plans/2026-07-25-fix-projectcard-compiler-error.md) — remove invalid @ts-expect-error comment blocking the Projects page.
 
+- [GitHub issue #24: Favicon and site logo](superpowers/plans/2026-07-25-favicon-and-logo.md) — cross-platform favicon implementation and navigation logo integration.
+
+- [GitHub issue #25: Mobile navigation fix](superpowers/plans/2026-07-25-mobile-navigation.md) — hamburger menu toggle, overlay behavior, and responsive nav layout.
 ## Opportunities and content
 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.
