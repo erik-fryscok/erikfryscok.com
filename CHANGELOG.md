@@ -18,6 +18,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 - About page with professional narrative, engineering philosophy, leadership approach, and interests (issue #12).
 - Projects page with curated case study cards (issue #14).
 - Type declaration for `key` prop in Astro templates to support `.map()` reconciliation.
+- Project-level OpenCode configuration with separate GitHub read/publish MCP servers, exact tool allowlists, and manually approved publishing agent.
 
 ### Changed
 
