@@ -1,0 +1,231 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Safe starting point. Explicitly switch to Build when implementation begins.
+  "default_agent": "plan",
+
+  // Prevent subagents from recursively spawning more subagents.
+  "subagent_depth": 1,
+
+  "mcp": {
+    /*
+     * Remote-only GitHub information:
+     * issues, PRs, reviews, comments, and statuses.
+     *
+     * Use a separate read-only fine-grained PAT restricted to the
+     * repositories where this access is required.
+     */
+    "github_read": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_READ_PAT}",
+
+        // Exact tool allowlist rather than broad toolsets.
+        "X-MCP-Tools": "get_me,issue_read,list_issues,search_issues,pull_request_read,list_pull_requests,search_pull_requests",
+
+        // Additional protection against accidentally added write tools.
+        "X-MCP-Readonly": "true"
+      }
+    },
+
+    /*
+     * Deliberately small publishing interface.
+     *
+     * Start with comments and draft PR creation. Add other write tools
+     * only after a demonstrated need.
+     */
+    "github_publish": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_WRITE_PAT}",
+        "X-MCP-Tools": "add_issue_comment,create_pull_request"
+      }
+    }
+  },
+
+  /*
+   * Keep the MCP servers connected, but hide their tools from all agents
+   * unless an agent explicitly re-enables them.
+   *
+   * Do not use enabled:false here. That disables the entire server rather
+   * than making it selectively available to agents.
+   */
+  "permission": {
+    "github_*": "deny"
+  },
+
+  "agent": {
+    "plan": {
+      "temperature": 0.1,
+      "steps": 10,
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "github_*": "deny",
+
+        "task": {
+          "*": "deny",
+
+          // Fast local read-only exploration.
+          "explore": "allow",
+
+          // These can add cost, so require approval before delegation.
+          "scout": "ask",
+          "github-read": "ask",
+          "general": "ask",
+
+          // Publication must never happen through automatic delegation.
+          "github-publish": "deny"
+        }
+      }
+    },
+
+    "build": {
+      "temperature": 0.2,
+      "steps": 20,
+      "permission": {
+        "edit": "allow",
+
+        // Build works locally and delegates remote reads when necessary.
+        "github_*": "deny",
+
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "scout": "ask",
+          "github-read": "ask",
+          "general": "ask",
+          "github-publish": "deny"
+        },
+
+        /*
+         * Allow harmless inspection commands.
+         * Ask before local state changes.
+         * Deny high-risk/destructive operations.
+         *
+         * Rules are evaluated in order; the last matching rule wins.
+         */
+        "bash": {
+          "*": "ask",
+
+          "git status*": "allow",
+          "git diff*": "allow",
+          "git log*": "allow",
+          "git show*": "allow",
+          "git rev-parse*": "allow",
+          "git ls-files*": "allow",
+
+          "git commit*": "ask",
+          "git push*": "ask",
+
+          "git push *--force*": "deny",
+          "git reset --hard*": "deny",
+          "git clean*": "deny",
+          "git branch -D*": "deny",
+
+          /*
+           * Prevent GitHub CLI from silently bypassing your MCP rules.
+           * Specific read-only gh commands can be allowed later.
+           */
+          "gh *": "ask",
+          "gh pr merge*": "deny",
+          "gh repo delete*": "deny"
+        }
+      }
+    },
+
+    "github-read": {
+      "description": "Use only when the task depends on remote GitHub issue or pull-request state that is unavailable locally. Make one targeted query at a time, limit lists to 10 items, avoid diffs unless requested, and return a concise summary.",
+      "mode": "subagent",
+
+      // Explicitly assign your cheapest reliable tool-capable model.
+      // "model": "provider/cheap-model",
+
+      "temperature": 0,
+      "steps": 5,
+
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "read": "deny",
+        "glob": "deny",
+        "grep": "deny",
+        "lsp": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "task": "deny",
+
+        "github_read_*": "allow",
+        "github_publish_*": "deny"
+      }
+    },
+
+    "github-publish": {
+      "description": "Perform exactly one explicitly requested GitHub mutation. Default new pull requests to draft. Never merge, modify repository files, push commits, update branches, assign another coding agent, or perform follow-up actions. Stop after the approved action and report its URL.",
+      "mode": "subagent",
+
+      // A small deterministic model should be sufficient.
+      // "model": "provider/cheap-model",
+
+      "temperature": 0,
+      "steps": 3,
+
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "read": "deny",
+        "glob": "deny",
+        "grep": "deny",
+        "lsp": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "task": "deny",
+
+        // Read before publishing when necessary.
+        "github_read_*": "allow",
+
+        // Every advertised publishing operation requires approval.
+        "github_publish_*": "ask"
+      }
+    },
+
+    /*
+     * Limit built-in agents as well. Tune these values from your test data.
+     */
+    "general": {
+      "disable": true
+    },
+    "explore": {
+      "steps": 6
+      // Add a low-cost model here.
+      // "model": "provider/low-cost-tool-model"
+    },
+    "scout": {
+      "steps": 8
+      // Add a low-cost model here.
+      // "model": "provider/low-cost-tool-model"
+    }
+  },
+
+  "command": {
+    "gh-read": {
+      "description": "Inspect GitHub metadata in an isolated read-only subtask",
+      "agent": "github-read",
+      "subtask": true,
+      "template": "Answer this GitHub-only question using the minimum number of targeted calls: $ARGUMENTS"
+    },
+
+    "gh-publish": {
+      "description": "Perform one explicitly requested GitHub mutation",
+      "agent": "github-publish",
+      "subtask": true,
+      "template": "Perform only this explicitly requested GitHub mutation, then stop: $ARGUMENTS"
+    }
+  }
+}
