@@ -19,6 +19,9 @@ The site may deploy continuously. This changelog records meaningful product rele
 - Projects page with curated case study cards (issue #14).
 - Type declaration for `key` prop in Astro templates to support `.map()` reconciliation.
 - Project-level OpenCode configuration with separate GitHub read/publish MCP servers, exact tool allowlists, and manually approved publishing agent.
+- Favicon with SVG, PNG, and Apple Touch Icon for cross-platform browser support (issue #24).
+- Web App Manifest for Android Chrome home-screen installation (issue #24).
+- Site logo in navigation header replacing plain-text brand (issue #24).
 
 ### Changed
 
