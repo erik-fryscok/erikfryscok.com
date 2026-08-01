@@ -21,7 +21,7 @@
       "enabled": true,
       "oauth": false,
       "headers": {
-        "Authorization": "Bearer {env:GITHUB_READ_PAT}",
+        "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}",
 
         // Exact tool allowlist rather than broad toolsets.
         "X-MCP-Tools": "get_me,issue_read,list_issues,search_issues,pull_request_read,list_pull_requests,search_pull_requests",
@@ -43,7 +43,7 @@
       "enabled": true,
       "oauth": false,
       "headers": {
-        "Authorization": "Bearer {env:GITHUB_WRITE_PAT}",
+        "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}",
         "X-MCP-Tools": "add_issue_comment,create_pull_request"
       }
     }
