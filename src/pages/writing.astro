@@ -13,14 +13,22 @@ import BaseLayout from "../components/BaseLayout.astro";
       and architectures that others can build on.
     </p>
 
-    <!-- Placeholder Article List -->
     <div class="border border-gray-200 rounded-lg p-6">
-      <h2 class="text-lg font-semibold mb-3">Articles</h2>
-      <p class="text-gray-500 italic">
-        Articles are coming soon. This section will host Markdown-based writing
-        on software engineering, team practices, and the tools that make modern
-        development teams more effective.
-      </p>
+      <h2 class="text-lg font-semibold mb-4">Articles</h2>
+      <ul class="space-y-4">
+        <li>
+          <a
+            href="/writing/opencode-configuration-guide"
+            class="text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors"
+          >
+            OpenCode Configuration Guide: Safety, Quality, and ROI in AI-Assisted Delivery
+          </a>
+          <p class="text-gray-600 mt-1">
+            A practical walkthrough of agent roles, permission design, and MCP controls
+            that keep AI coding workflows effective and production-safe.
+          </p>
+        </li>
+      </ul>
     </div>
   </div>
 </BaseLayout>
