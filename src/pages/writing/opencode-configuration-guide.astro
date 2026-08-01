@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+---
+
+<BaseLayout title="OpenCode Configuration Guide — Erik Fryscok">
+  <article class="max-w-3xl mx-auto prose prose-gray">
+    <header class="not-prose mb-8">
+      <p class="text-sm text-gray-500 mb-2">Published: 2026-08-01</p>
+      <h1 class="text-3xl font-bold leading-tight mb-3">
+        OpenCode Configuration Guide: Safety, Quality, and ROI in AI-Assisted Delivery
+      </h1>
+      <p class="text-gray-700">
+        This post explains how I configure AI agents in OpenCode so they are useful in
+        real software projects: controlled delegation, clear boundaries, explicit
+        approvals, and measurable delivery outcomes.
+      </p>
+    </header>
+
+    <h2>Why configuration quality matters</h2>
+    <p>
+      AI coding tools are easy to adopt and easy to misuse. In client work, the goal is
+      not maximum automation at any cost. The goal is dependable throughput: faster
+      iteration, fewer avoidable defects, and tighter operational risk controls.
+    </p>
+    <p>
+      A good configuration acts like an engineering operating model. It encodes who can
+      do what, under what conditions, and with what approval gates.
+    </p>
+
+    <h2>Core architecture in this setup</h2>
+    <p>
+      The config separates <strong>agent identity</strong> from
+      <strong>agent behavior</strong>:
+    </p>
+    <ul>
+      <li>
+        <code>.opencode/agents/*.md</code> defines each role&apos;s purpose, model, and
+        operating instructions.
+      </li>
+      <li>
+        <code>.opencode/opencode.jsonc</code> defines behavior controls such as
+        permissions, delegation rules, temperatures, and step budgets.
+      </li>
+    </ul>
+    <p>
+      This split keeps role definitions readable while making enforcement centralized and
+      auditable.
+    </p>
+
+    <h2>Role design: specialized agents over one "do everything" agent</h2>
+    <p>
+      The stack uses purpose-built roles instead of a single unconstrained assistant:
+    </p>
+    <ul>
+      <li><strong>Chat</strong> for read-only discussion and reasoning.</li>
+      <li><strong>Plan</strong> for executable implementation plans.</li>
+      <li><strong>Build</strong> for plan execution and code changes.</li>
+      <li>
+        <strong>Review</strong> as an orchestrator that delegates to code-review,
+        security, and documentation specialists.
+      </li>
+      <li>
+        <strong>Explore</strong>, <strong>General</strong>, and <strong>Scout</strong>
+        for scoped support tasks.
+      </li>
+      <li>
+        <strong>GitHub-read</strong> and <strong>GitHub-publish</strong> for tightly
+        controlled remote operations.
+      </li>
+    </ul>
+    <p>
+      This reduces context switching, gives each model a clear job, and improves review
+      quality because each stage is explicit.
+    </p>
+
+    <h2>Security and risk controls built into the config</h2>
+    <ul>
+      <li>
+        <strong>MCP split by intent:</strong> separate read-only GitHub access from a
+        minimal publish surface.
+      </li>
+      <li>
+        <strong>Tool allowlists:</strong> only named MCP tools are exposed, not broad
+        capability groups.
+      </li>
+      <li>
+        <strong>Global deny-first posture:</strong> GitHub tool families are denied by
+        default and re-enabled only per role.
+      </li>
+      <li>
+        <strong>Approval gates:</strong> potentially costly or state-changing actions are
+        set to ask-before-run.
+      </li>
+      <li>
+        <strong>Destructive command denies:</strong> force push, hard reset, clean, and
+        other high-risk commands are blocked.
+      </li>
+      <li>
+        <strong>Delegation depth limit:</strong> subagent depth is constrained to prevent
+        recursive task spawning.
+      </li>
+    </ul>
+
+    <h2>How this improves ROI for real projects</h2>
+    <p>
+      ROI in AI-assisted engineering is mostly operational, not hype-driven. This setup
+      targets three outcomes:
+    </p>
+    <ol>
+      <li>
+        <strong>Higher throughput:</strong> planning, implementation, and review can be
+        decomposed and parallelized safely.
+      </li>
+      <li>
+        <strong>Lower rework cost:</strong> specialist review catches defects and
+        documentation drift earlier.
+      </li>
+      <li>
+        <strong>Reduced blast radius:</strong> explicit permissions and approval flows
+        make accidental destructive operations less likely.
+      </li>
+    </ol>
+    <p>
+      The practical effect is predictable cycle time and cleaner handoffs, which is what
+      clients usually value most.
+    </p>
+
+    <h2>Implementation principles I recommend</h2>
+    <ul>
+      <li>Default deny; then grant only what each role truly needs.</li>
+      <li>Keep read and write paths separate for external systems.</li>
+      <li>Require human approval for publication and irreversible operations.</li>
+      <li>Use role specialization to improve consistency and accountability.</li>
+      <li>Document the workflow so teams can audit and evolve it deliberately.</li>
+    </ul>
+
+    <h2>Final note</h2>
+    <p>
+      AI agents are most effective when treated like constrained teammates operating
+      inside an intentional system. The configuration is the system. When built well, it
+      turns AI from novelty into reliable leverage.
+    </p>
+  </article>
+</BaseLayout>

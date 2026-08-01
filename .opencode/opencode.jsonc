@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
 
   // Safe starting point. Explicitly switch to Build when implementation begins.
-  "default_agent": "plan",
+  "default_agent": "chat",
 
   // Prevent subagents from recursively spawning more subagents.
   "subagent_depth": 1,
@@ -60,10 +60,32 @@
     "github_*": "deny"
   },
 
+  /*
+   * Behavior configuration only: temperature, steps, permissions, and
+   * task-delegation rules. Identity (description, model, mode, prompt)
+   * lives in .opencode/agents/<name>.md — one source of truth per agent.
+   */
   "agent": {
+    "chat": {
+      "temperature": 0.3,
+      "steps": 5,
+      "color": "primary",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
+    },
+
     "plan": {
       "temperature": 0.1,
       "steps": 10,
+      "color": "secondary",
       "permission": {
         "edit": "deny",
         "bash": "deny",
@@ -80,6 +102,11 @@
           "github-read": "ask",
           "general": "ask",
 
+          // Review subagents are exclusive to Review.
+          "documentation": "deny",
+          "security": "deny",
+          "code-review": "deny",
+
           // Publication must never happen through automatic delegation.
           "github-publish": "deny"
         }
@@ -89,6 +116,7 @@
     "build": {
       "temperature": 0.2,
       "steps": 20,
+      "color": "accent",
       "permission": {
         "edit": "allow",
 
@@ -101,6 +129,12 @@
           "scout": "ask",
           "github-read": "ask",
           "general": "ask",
+
+          // Review subagents are exclusive to Review.
+          "documentation": "deny",
+          "security": "deny",
+          "code-review": "deny",
+
           "github-publish": "deny"
         },
 
@@ -140,13 +174,186 @@
       }
     },
 
+    /*
+     * Review orchestrates its three specialist subagents and synthesizes
+     * their findings. Read-only itself; generous steps for the
+     * gather → delegate → synthesize cycle.
+     */
+    "review": {
+      "temperature": 0,
+      "steps": 15,
+      "color": "info",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "github_*": "deny",
+
+        "task": {
+          "*": "deny",
+
+          // The three specialists this orchestrator drives.
+          "code-review": "allow",
+          "security": "allow",
+          "documentation": "allow",
+
+          // Local exploration when subagent findings need verification.
+          "explore": "allow",
+
+          // External lookups require approval.
+          "scout": "ask",
+          "github-read": "ask",
+
+          "general": "deny",
+          "github-publish": "deny"
+        },
+
+        /*
+         * Read-only git inspection for assembling the branch diff.
+         * All state-changing git operations are denied outright.
+         */
+        "bash": {
+          "*": "ask",
+
+          "git status*": "allow",
+          "git rev-parse*": "allow",
+          "git merge-base*": "allow",
+          "git log*": "allow",
+          "git diff*": "allow",
+          "git show*": "allow",
+          "git blame*": "allow",
+          "git branch": "allow",
+          "git branch -a*": "allow",
+          "git branch -r*": "allow",
+          "git branch -vv*": "allow",
+          "git ls-files*": "allow",
+          "git name-rev*": "allow",
+          "git remote": "allow",
+          "git remote -v*": "allow",
+          "git config --get*": "allow",
+          "git stash list*": "allow",
+
+          "git commit*": "deny",
+          "git push*": "deny",
+          "git reset*": "deny",
+          "git rebase*": "deny",
+          "git merge*": "deny",
+          "git checkout*": "deny",
+          "git switch*": "deny",
+          "git cherry-pick*": "deny",
+          "git revert*": "deny",
+          "git branch -d*": "deny",
+          "git branch -D*": "deny",
+          "git stash drop*": "deny",
+          "git stash pop*": "deny"
+        }
+      }
+    },
+
+    /*
+     * Re-enabled general-purpose worker. Cheapest capable model assigned
+     * in its markdown file; edit access retained for multi-step work.
+     */
+    "general": {
+      "temperature": 0.3,
+      "steps": 10,
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "allow",
+        "bash": "ask",
+        "github_*": "deny",
+        "task": "deny"
+      }
+    },
+
+    "explore": {
+      "temperature": 0,
+      "steps": 6,
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "task": "deny"
+      }
+    },
+
+    "scout": {
+      "temperature": 0,
+      "steps": 8,
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
+    },
+
+    /*
+     * Review's three specialists. Read-only, focused, and denied any
+     * further delegation (subagent_depth is 1, but belt and braces).
+     */
+    "documentation": {
+      "temperature": 0,
+      "steps": 8,
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "github_*": "deny",
+        "task": "deny"
+      }
+    },
+
+    "security": {
+      "temperature": 0,
+      "steps": 10,
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "github_*": "deny",
+        "task": "deny"
+      }
+    },
+
+    "code-review": {
+      "temperature": 0,
+      "steps": 10,
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "github_*": "deny",
+        "task": "deny"
+      }
+    },
+
     "github-read": {
-      "description": "Use only when the task depends on remote GitHub issue or pull-request state that is unavailable locally. Make one targeted query at a time, limit lists to 10 items, avoid diffs unless requested, and return a concise summary.",
-      "mode": "subagent",
-
-      // Explicitly assign your cheapest reliable tool-capable model.
-      // "model": "provider/cheap-model",
-
       "temperature": 0,
       "steps": 5,
 
@@ -167,12 +374,6 @@
     },
 
     "github-publish": {
-      "description": "Perform exactly one explicitly requested GitHub mutation. Default new pull requests to draft. Never merge, modify repository files, push commits, update branches, assign another coding agent, or perform follow-up actions. Stop after the approved action and report its URL.",
-      "mode": "subagent",
-
-      // A small deterministic model should be sufficient.
-      // "model": "provider/cheap-model",
-
       "temperature": 0,
       "steps": 3,
 
@@ -193,39 +394,6 @@
         // Every advertised publishing operation requires approval.
         "github_publish_*": "ask"
       }
-    },
-
-    /*
-     * Limit built-in agents as well. Tune these values from your test data.
-     */
-    "general": {
-      "disable": true
-    },
-    "explore": {
-      "steps": 6
-      // Add a low-cost model here.
-      // "model": "provider/low-cost-tool-model"
-    },
-    "scout": {
-      "steps": 8
-      // Add a low-cost model here.
-      // "model": "provider/low-cost-tool-model"
-    }
-  },
-
-  "command": {
-    "gh-read": {
-      "description": "Inspect GitHub metadata in an isolated read-only subtask",
-      "agent": "github-read",
-      "subtask": true,
-      "template": "Answer this GitHub-only question using the minimum number of targeted calls: $ARGUMENTS"
-    },
-
-    "gh-publish": {
-      "description": "Perform one explicitly requested GitHub mutation",
-      "agent": "github-publish",
-      "subtask": true,
-      "template": "Perform only this explicitly requested GitHub mutation, then stop: $ARGUMENTS"
     }
   }
 }
