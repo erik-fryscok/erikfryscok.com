@@ -4,6 +4,29 @@
   // Safe starting point. Explicitly switch to Build when implementation begins.
   "default_agent": "chat",
 
+  "enabled_providers": ["anthropic", "openai", "opencode", "cline-pass", "lmstudio"],
+  "provider": {
+    "lmstudio": {
+      "models": {
+        "qwen/qwen3.5-9b": {
+          "name": "Qwen3.5 9B"
+        },
+        "openai/gpt-oss-120b": {
+          "name": "GPT-OSS 120B"
+        },
+        "qwen/qwen3.6-35b-a3b": {
+          "name": "Qwen3.6 35B A3B"
+        },
+        "qwen/qwen3.5 122B A10B": {
+          "name": "Qwen3.5 122B A10B"
+        },
+        "openai/gpt-oss-20b": {
+          "name": "GPT-OSS 20B"
+        }
+      }
+    }
+  },
+
   // Prevent subagents from recursively spawning more subagents.
   "subagent_depth": 1,
 
