@@ -91,7 +91,6 @@
   "agent": {
     "chat": {
       "temperature": 0.3,
-      "steps": 5,
       "color": "primary",
       "permission": {
         "read": "allow",
@@ -107,7 +106,6 @@
 
     "plan": {
       "temperature": 0.1,
-      "steps": 10,
       "color": "secondary",
       "permission": {
         "edit": "deny",
@@ -138,7 +136,6 @@
 
     "build": {
       "temperature": 0.2,
-      "steps": 20,
       "color": "accent",
       "permission": {
         "edit": "allow",
@@ -192,7 +189,12 @@
            */
           "gh *": "ask",
           "gh pr merge*": "deny",
-          "gh repo delete*": "deny"
+          "gh repo delete*": "deny",
+
+          "npm run check": "allow",
+          "ls -la*": "allow",
+          "git check*": "allow",
+          "git worktree *": "allow"
         }
       }
     },
@@ -204,7 +206,6 @@
      */
     "review": {
       "temperature": 0,
-      "steps": 15,
       "color": "info",
       "permission": {
         "read": "allow",
@@ -282,7 +283,6 @@
      */
     "general": {
       "temperature": 0.3,
-      "steps": 10,
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -296,7 +296,6 @@
 
     "explore": {
       "temperature": 0,
-      "steps": 6,
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -311,7 +310,6 @@
 
     "scout": {
       "temperature": 0,
-      "steps": 8,
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -330,7 +328,6 @@
      */
     "documentation": {
       "temperature": 0,
-      "steps": 8,
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -346,7 +343,6 @@
 
     "security": {
       "temperature": 0,
-      "steps": 10,
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -362,7 +358,6 @@
 
     "code-review": {
       "temperature": 0,
-      "steps": 10,
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -378,7 +373,6 @@
 
     "github-read": {
       "temperature": 0,
-      "steps": 5,
 
       "permission": {
         "edit": "deny",
@@ -398,7 +392,6 @@
 
     "github-publish": {
       "temperature": 0,
-      "steps": 3,
 
       "permission": {
         "edit": "deny",
