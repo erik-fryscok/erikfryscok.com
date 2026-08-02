@@ -69,6 +69,24 @@
         "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}",
         "X-MCP-Tools": "add_issue_comment,create_pull_request"
       }
+    },
+
+    /*
+     * Issue-focused GitHub publishing interface.
+     *
+     * Keep issue mutations separate from general publishing tools.
+     */
+    "github_issues": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}",
+
+        // Exact issue-management tool allowlist.
+        "X-MCP-Tools": "issue_write,add_issue_comment,label_write,sub_issue_write"
+      }
     }
   },
 
@@ -80,7 +98,8 @@
    * than making it selectively available to agents.
    */
   "permission": {
-    "github_*": "deny"
+    "github_*": "deny",
+    "github_issues_*": "deny"
   },
 
   /*
@@ -108,9 +127,13 @@
       "temperature": 0.1,
       "color": "secondary",
       "permission": {
-        "edit": "deny",
+        "edit": {
+          "*": "deny",
+          "docs/superpowers/plans/*.md": "ask"
+        },
         "bash": "deny",
         "github_*": "deny",
+        "github_issues_*": "deny",
 
         "task": {
           "*": "deny",
@@ -122,6 +145,7 @@
           "scout": "ask",
           "github-read": "ask",
           "general": "ask",
+          "github-issues": "ask",
 
           // Review subagents are exclusive to Review.
           "documentation": "deny",
@@ -409,6 +433,27 @@
 
         // Every advertised publishing operation requires approval.
         "github_publish_*": "ask"
+      }
+    },
+
+    "github-issues": {
+      "temperature": 0,
+      "steps": 5,
+
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "read": "deny",
+        "glob": "deny",
+        "grep": "deny",
+        "lsp": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "task": "deny",
+
+        "github_read_*": "deny",
+        "github_publish_*": "deny",
+        "github_issues_*": "ask"
       }
     }
   }
