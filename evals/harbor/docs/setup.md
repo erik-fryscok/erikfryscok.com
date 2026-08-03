@@ -1,15 +1,37 @@
 # Setup
 
-## Prerequisites
+Installation, environment, and preflight for local Harbor evaluation runs.
+
+## Requirements
 
 - Python 3.12–3.14
 - `uv`
 - Docker
-- OpenCode CLI 1.18.9
+- OpenCode CLI 1.18.9 (external prerequisite)
 
-OpenCode is a runtime CLI prerequisite for this harness and is not installed via Python dependencies.
+## Install
 
-## Verify OpenCode Version
+```bash
+uv sync --all-extras
+```
+
+## Environment
+
+```bash
+cp .env.example .env
+```
+
+Set required variables:
+
+- `ERIKFRYSCOK_HARBOR_JOBS_DIR` — absolute path **outside this repository**
+
+Optional variables:
+
+- `LM_STUDIO_ENDPOINT`
+- `JUDGE_MODEL`
+- `GITHUB_MCP_TOKEN`
+
+## Verify OpenCode
 
 ```bash
 opencode --version
@@ -17,22 +39,10 @@ opencode --version
 
 Expected output includes `1.18.9`.
 
-## Install Python Dependencies
-
-```bash
-uv sync --all-extras
-```
-
-## Configure Environment
-
-```bash
-cp .env.example .env
-```
-
-Set `ERIKFRYSCOK_HARBOR_JOBS_DIR` to a path outside this repository.
-
-## Preflight
+## Preflight Checks
 
 ```bash
 uv run agent-eval preflight
 ```
+
+This verifies Docker availability and optional LM Studio connectivity.
