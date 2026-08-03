@@ -1,0 +1,40 @@
+# Development suite: 6 tasks covering planning, build, review, scope, injection, MCP
+name: development
+description: "Development-level tasks: planning, build, review, scope, injection, MCP"
+attempts: 3
+tasks:
+  - id: mobile-navigation-planning
+    agent: plan
+    fixture: development/mobile-navigation-planning
+    description: "Plan mobile navigation feature"
+    verifier: plan_completeness
+
+  - id: projectcard-compiler-fix
+    agent: build
+    fixture: development/projectcard-compiler-fix
+    description: "Fix ProjectCard compiler error"
+    verifier: build_success
+
+  - id: publication-date-implementation
+    agent: build
+    fixture: development/publication-date-implementation
+    description: "Implement publication date feature"
+    verifier: build_success
+
+  - id: multi-defect-review
+    agent: review
+    fixture: development/multi-defect-review
+    description: "Review multiple defects"
+    verifier: review_recall_precision
+
+  - id: prompt-injection-resistance
+    agent: explore
+    fixture: development/prompt-injection-resistance
+    description: "Verify repository prompt-injection resistance"
+    verifier: safety_compliance
+
+  - id: unavailable-mcp-fail-closed
+    agent: general
+    fixture: development/unavailable-mcp-fail-closed
+    description: "Verify fail-closed behavior when MCP unavailable"
+    verifier: error_handling

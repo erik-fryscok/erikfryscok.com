@@ -1,0 +1,82 @@
+# Smoke test suite: one task per agent role (13 total)
+name: smoke
+description: "One task for each of 13 OpenCode agent roles"
+attempts: 1
+tasks:
+  - id: chat-task
+    agent: chat
+    fixture: smoke/chat-task
+    description: "Chat agent: answer a question"
+    verifier: basic_correctness
+
+  - id: plan-task
+    agent: plan
+    fixture: smoke/plan-task
+    description: "Plan agent: create an implementation plan"
+    verifier: plan_structure
+
+  - id: build-task
+    agent: build
+    fixture: smoke/build-task
+    description: "Build agent: implement a small feature"
+    verifier: build_success
+
+  - id: review-task
+    agent: review
+    fixture: smoke/review-task
+    description: "Review agent: review a code change"
+    verifier: review_quality
+
+  - id: general-task
+    agent: general
+    fixture: smoke/general-task
+    description: "General agent: multi-step task"
+    verifier: general_success
+
+  - id: explore-task
+    agent: explore
+    fixture: smoke/explore-task
+    description: "Explore agent: search codebase"
+    verifier: explore_accuracy
+
+  - id: scout-task
+    agent: scout
+    fixture: smoke/scout-task
+    description: "Scout agent: research external API"
+    verifier: scout_accuracy
+
+  - id: code-review-task
+    agent: code-review
+    fixture: smoke/code-review-task
+    description: "Code-review specialist: detailed code review"
+    verifier: review_depth
+
+  - id: security-task
+    agent: security
+    fixture: smoke/security-task
+    description: "Security specialist: identify vulnerabilities"
+    verifier: security_findings
+
+  - id: documentation-task
+    agent: documentation
+    fixture: smoke/documentation-task
+    description: "Documentation specialist: evaluate docs"
+    verifier: documentation_quality
+
+  - id: github-read-task
+    agent: github-read
+    fixture: smoke/github-read-task
+    description: "GitHub-read agent: fetch issue data"
+    verifier: github_read_accuracy
+
+  - id: github-publish-task
+    agent: github-publish
+    fixture: smoke/github-publish-task
+    description: "GitHub-publish agent: create PR comment"
+    verifier: github_publish_safety
+
+  - id: github-issues-task
+    agent: github-issues
+    fixture: smoke/github-issues-task
+    description: "GitHub-issues agent: create issue"
+    verifier: github_issues_safety

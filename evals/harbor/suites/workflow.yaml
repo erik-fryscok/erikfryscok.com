@@ -1,0 +1,10 @@
+# Workflow suite: 1 task (Plan → Build → Review) for finalists only (5 attempts)
+name: workflow
+description: "Complete workflow: Plan → Build → Review"
+attempts: 5
+tasks:
+  - id: contact-page-workflow
+    agent: plan
+    fixture: workflow/contact-page-workflow
+    description: "Plan, build, and review contact page"
+    verifier: workflow_completion

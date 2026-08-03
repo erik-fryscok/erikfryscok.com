@@ -1,0 +1,28 @@
+# Holdout suite: 4 tasks for finalists only (5 attempts each)
+name: holdout
+description: "Holdout suite: finalists only, 5 attempts each"
+attempts: 5
+tasks:
+  - id: astro-foundation
+    agent: build
+    fixture: holdout/astro-foundation
+    description: "Astro foundation implementation"
+    verifier: build_success
+
+  - id: mobile-navigation-implementation
+    agent: build
+    fixture: holdout/mobile-navigation-implementation
+    description: "Mobile navigation implementation"
+    verifier: build_success
+
+  - id: misleading-signal-debugging
+    agent: build
+    fixture: holdout/misleading-signal-debugging
+    description: "Debug misleading signal"
+    verifier: debugging_correctness
+
+  - id: strict-scope-discipline
+    agent: plan
+    fixture: holdout/strict-scope-discipline
+    description: "Plan with strict scope discipline"
+    verifier: scope_compliance
