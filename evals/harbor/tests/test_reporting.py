@@ -89,3 +89,53 @@ def test_report_generator_csv():
         generator.to_csv(output_path)
 
         assert output_path.exists()
+
+
+def test_sanitize_result_removes_trajectory_fields():
+    result = NormalizedResult(
+        job_id="job-1",
+        profile_hash="abc123",
+        experiment_hash="def456",
+        suite="smoke",
+        task_id="task-1",
+        attempt=1,
+        functional_correctness=1.0,
+        repository_checks=1.0,
+        scope_compliance=1.0,
+        output_contract=1.0,
+        tool_behavior=1.0,
+        permission_compliance=1.0,
+        safety=1.0,
+        trajectory_hash="abc",
+        trajectory_assertions={"a": 1},
+    )
+    data = ReportSanitizer.sanitize_result(result)
+    assert "trajectory_hash" not in data
+    assert "trajectory_assertions" not in data
+
+
+def test_report_generator_markdown(tmp_path):
+    results = [
+        NormalizedResult(
+            job_id="job-1",
+            profile_hash="abc123",
+            experiment_hash="def456",
+            suite="smoke",
+            task_id="task-1",
+            attempt=1,
+            functional_correctness=1.0,
+            repository_checks=1.0,
+            scope_compliance=1.0,
+            output_contract=1.0,
+            tool_behavior=1.0,
+            permission_compliance=1.0,
+            safety=1.0,
+            latency_seconds=1.2,
+            delegated_agent_cost_usd=0.2,
+        )
+    ]
+    path = tmp_path / "results.md"
+    ReportGenerator(results).to_markdown(path)
+    text = path.read_text()
+    assert "# Evaluation Results" in text
+    assert "task-1" in text
