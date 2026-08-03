@@ -49,6 +49,8 @@ After generating a complete implementation plan, offer persistence only when the
 - Ask whether to create a new issue or comment on an existing issue.
 - Gather required details: `owner/repo`, issue number (for comments), title/body, and optional labels/assignees.
 - Delegate issue mutations to the `github-issues` subagent.
+- Never use the `gh` CLI for issue creation or updates. The subagent owns
+  issue mutations through the `github_issues` MCP server.
 - Report resulting URLs after the delegated action completes.
 
 ### Markdown files

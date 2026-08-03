@@ -173,6 +173,7 @@
           "scout": "ask",
           "github-read": "ask",
           "general": "ask",
+          "github-issues": "ask",
 
           // Review subagents are exclusive to Review.
           "documentation": "deny",
@@ -192,33 +193,41 @@
         "bash": {
           "*": "ask",
 
-          "git status*": "allow",
-          "git diff*": "allow",
-          "git log*": "allow",
-          "git show*": "allow",
-          "git rev-parse*": "allow",
-          "git ls-files*": "allow",
+          "git status *": "allow",
+          "git diff *": "allow",
+          "git log *": "allow",
+          "git show *": "allow",
+          "git rev-parse *": "allow",
+          "git ls-files *": "allow",
 
-          "git commit*": "ask",
-          "git push*": "ask",
+          "git add *": "ask",
+          "git commit *": "ask",
+          "git push *": "ask",
 
-          "git push *--force*": "deny",
-          "git reset --hard*": "deny",
-          "git clean*": "deny",
-          "git branch -D*": "deny",
+          "git push --force *": "deny",
+          "git reset --hard *": "deny",
+          "git clean *": "deny",
+          "git branch *": "deny",
 
           /*
            * Prevent GitHub CLI from silently bypassing your MCP rules.
            * Specific read-only gh commands can be allowed later.
            */
           "gh *": "ask",
-          "gh pr merge*": "deny",
-          "gh repo delete*": "deny",
+          "gh issue *": "deny",
+          "gh pr merge *": "deny",
+          "gh repo delete": "deny",
 
-          "npm run check": "allow",
-          "ls -la*": "allow",
-          "git check*": "allow",
-          "git worktree *": "allow"
+          "npm install *": "allow",
+          "npm test *": "allow",
+          "npm run *": "allow",
+          "ls": "allow",
+          "ls *": "allow",
+          "git check-ignore *": "allow",
+          "git worktree *": "allow",
+
+          "echo *": "allow",
+          "uv *": "allow"
         }
       }
     },
@@ -266,37 +275,31 @@
         "bash": {
           "*": "ask",
 
-          "git status*": "allow",
-          "git rev-parse*": "allow",
-          "git merge-base*": "allow",
-          "git log*": "allow",
-          "git diff*": "allow",
-          "git show*": "allow",
-          "git blame*": "allow",
-          "git branch": "allow",
-          "git branch -a*": "allow",
-          "git branch -r*": "allow",
-          "git branch -vv*": "allow",
-          "git ls-files*": "allow",
-          "git name-rev*": "allow",
-          "git remote": "allow",
-          "git remote -v*": "allow",
-          "git config --get*": "allow",
-          "git stash list*": "allow",
+          "git status *": "allow",
+          "git rev-parse *": "allow",
+          "git merge-base *": "allow",
+          "git log *": "allow",
+          "git diff *": "allow",
+          "git show *": "allow",
+          "git blame *": "allow",
+          "git branch *": "allow",
+          "git ls-files *": "allow",
+          "git name-rev *": "allow",
+          "git remote *": "allow",
+          "git config *": "allow",
+          "git stash list *": "allow",
 
-          "git commit*": "deny",
-          "git push*": "deny",
-          "git reset*": "deny",
-          "git rebase*": "deny",
-          "git merge*": "deny",
-          "git checkout*": "deny",
-          "git switch*": "deny",
-          "git cherry-pick*": "deny",
-          "git revert*": "deny",
-          "git branch -d*": "deny",
-          "git branch -D*": "deny",
-          "git stash drop*": "deny",
-          "git stash pop*": "deny"
+          "git commit *": "deny",
+          "git push *": "deny",
+          "git reset *": "deny",
+          "git rebase *": "deny",
+          "git merge *": "deny",
+          "git checkout *": "deny",
+          "git switch *": "deny",
+          "git cherry-pick *": "deny",
+          "git revert *": "deny",
+          "git stash drop *": "deny",
+          "git stash pop *": "deny"
         }
       }
     },

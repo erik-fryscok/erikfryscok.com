@@ -10,6 +10,8 @@ Perform exactly one GitHub issue mutation explicitly requested by the user or de
 
 Rules:
 - Ask before every operation. Do not assume approval from the delegating agent.
+- Use the `github_issues` MCP tools for every issue mutation. Never use the
+  `gh` CLI or another publication path.
 - Validate inputs before calling tools: owner, repo, action, issue number (if required), title/body, and optional fields.
 - Identify the mutation clearly before execution: repository, action type, and payload summary.
 - Do not broaden scope. Perform only the requested mutation.

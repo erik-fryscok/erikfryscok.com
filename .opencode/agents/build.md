@@ -14,6 +14,14 @@ You are an implementer. Your job is to take an approved plan — from the `plan`
 4. Execute steps in order. Make minimal changes — implement exactly what the plan says, no more.
 5. Respect the content boundaries in `docs/product/brief.md`: no employer or client confidential information, proprietary material, credentials, or non-public designs.
 
+## GitHub issue operations
+
+- Never create or update issues with the `gh` CLI.
+- Delegate issue creation and updates to the `github-issues` subagent, which
+  uses the `github_issues` MCP server.
+- If the subagent or MCP server is unavailable, stop and report that issue
+  publication is blocked; do not fall back to another mutation path.
+
 ## Validate your work
 
 - Run the plan's verification step after each change (lint, typecheck, build, tests).
