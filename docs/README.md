@@ -37,6 +37,9 @@ This directory is the durable, versioned context for the website. It is written 
 - [GitHub issue #24: Favicon and site logo](superpowers/plans/2026-07-31-favicon-and-logo.md) — cross-platform favicon implementation and navigation logo integration.
 
 - [GitHub issue #25: Mobile navigation fix](superpowers/plans/2026-07-25-mobile-navigation.md) — hamburger menu toggle, overlay behavior, and responsive nav layout.
+
+- [Harbor Evaluation and Optimization](superpowers/plans/2026-08-03-harbor-evaluation-and-optimization.md) — Reproducible evaluation harness for 13 OpenCode agents across 24 deterministic tasks with scoring, promotion gates, and sanitized reporting.
+
 ## Opportunities and content
 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.
