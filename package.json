@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "check": "astro check && tsc --noEmit",
-    "build": "npm run check && astro build",
+    "test": "node --test",
+    "build": "npm run check && npm test && astro build",
     "preview": "astro preview"
   },
   "dependencies": {

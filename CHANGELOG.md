@@ -13,6 +13,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 ### Added
 
+- Flagship case study for erikfryscok.com, covering its static-site architecture, delivery workflow, custom domain, and domain email setup (issue #36).
 - Home page with hero section, introduction, selected work grid, and contact CTA (issue #11).
 - Placeholder pages for About, Writing, and Projects with shared BaseLayout.
 - Cloudflare Pages preview deployment for pre-launch review.

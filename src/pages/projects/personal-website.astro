@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+
+const liveSite = "https://erikfryscok.com";
+const sourceRepository = "https://github.com/erik-fryscok/erikfryscok.com";
+const projectBoard = "https://github.com/users/erik-fryscok/projects/73";
+---
+
+<BaseLayout title="erikfryscok.com — Project Case Study">
+  <article class="max-w-3xl mx-auto">
+    <header class="mb-12">
+      <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-3">Flagship project</p>
+      <h1 class="text-3xl font-bold mb-4">erikfryscok.com</h1>
+      <p class="text-lg text-gray-700 max-w-2xl">
+        A live, public engineering home base that demonstrates a practical path from planning and review to a fast static site, an owned domain, and reliable domain email.
+      </p>
+    </header>
+
+    <section class="mb-10" aria-labelledby="purpose">
+      <h2 id="purpose" class="text-2xl font-semibold mb-3">Purpose</h2>
+      <p class="text-gray-700">
+        The site brings together professional positioning, writing, selected work, and an easy way to get in touch. It is deliberately small enough to keep operating simply while still exercising the decisions required to deliver a real public presence.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="architecture">
+      <h2 id="architecture" class="text-2xl font-semibold mb-3">How it works</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="border border-gray-200 rounded-lg p-5">
+          <h3 class="font-semibold mb-2">Static application</h3>
+          <p class="text-sm text-gray-700">
+            Astro, TypeScript, and Tailwind CSS produce a static <code>dist</code> build. Cloudflare Pages serves that output without a server-side runtime or application secrets.
+          </p>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-5">
+          <h3 class="font-semibold mb-2">Owned web and email presence</h3>
+          <p class="text-sm text-gray-700">
+            Cloudflare manages the custom domain and DNS. Proton Mail uses the same domain for communication and email aliasing, keeping the public contact identity separate from the website build.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10" aria-labelledby="delivery">
+      <h2 id="delivery" class="text-2xl font-semibold mb-3">How it is delivered</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li><strong>Plan in public:</strong> GitHub Issues are the unit of work, and the public GitHub Project provides the active delivery view.</li>
+        <li><strong>Keep decisions durable:</strong> product intent, technical decisions, deployment notes, and released changes live in version-controlled documentation.</li>
+        <li><strong>Review before release:</strong> feature branches build Cloudflare Pages previews for review; merges to <code>main</code> publish the production site.</li>
+      </ul>
+    </section>
+
+    <section class="mb-10" aria-labelledby="demonstrates">
+      <h2 id="demonstrates" class="text-2xl font-semibold mb-3">What this demonstrates</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li>Choosing a static-first architecture that fits a content-focused public site.</li>
+        <li>Connecting product work, source control, documentation, previews, and production delivery into one understandable workflow.</li>
+        <li>Owning the domain and the communication layer without turning a small website into an operationally heavy system.</li>
+      </ul>
+    </section>
+
+    <section class="mb-10" aria-labelledby="lessons">
+      <h2 id="lessons" class="text-2xl font-semibold mb-3">Lessons and ongoing refinement</h2>
+      <p class="text-gray-700">
+        A personal website earns trust through useful content and clear delivery practices, not by pretending to be a larger product than it is. The project therefore favors a small, documented foundation over premature features; new capabilities are added when there is a clear visitor need and a maintainable way to support them.
+      </p>
+    </section>
+
+    <section aria-labelledby="explore">
+      <h2 id="explore" class="text-2xl font-semibold mb-3">Explore the project</h2>
+      <div class="flex flex-wrap gap-4">
+        <a href={liveSite} class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" rel="noopener noreferrer">Visit the live site</a>
+        <a href={sourceRepository} class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" rel="noopener noreferrer">View the source</a>
+        <a href={projectBoard} class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" rel="noopener noreferrer">View the GitHub Project</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

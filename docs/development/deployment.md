@@ -1,16 +1,26 @@
-# Cloudflare Pages Preview Deployment
+# Cloudflare Pages Deployment
 
-> **For agentic workers:** Use this document to understand the build contract, preview workflow, and local preview commands. Future tasks (#6 domain connection, #7 launch validation) depend on this configuration.
+> **For agentic workers:** Use this document to understand the build contract, production setup, preview workflow, and local preview commands.
 
-## Deployment URL
+## Production and preview URLs
 
-The Cloudflare Pages preview deployment is available at:
+The canonical production site is available at:
+
+```
+https://erikfryscok.com
+```
+
+Cloudflare Pages also provides the platform endpoint:
 
 ```
 https://erikfryscok.pages.dev
 ```
 
-> **Note:** This URL is the production deployment URL. Preview deployments from feature branches follow the pattern `https://<branch-name>--erikfryscok.pages.dev`. The repository owner must connect the GitHub repository in the Cloudflare Pages dashboard (Task 1) to enable automatic preview deployments.
+Preview deployments from feature branches follow the pattern `https://<branch-name>--erikfryscok.pages.dev`.
+
+## Domain and email
+
+Cloudflare manages the `erikfryscok.com` domain and its DNS, with the custom domain attached to the Pages project. Proton Mail uses the same domain for communication and email aliasing. DNS record values, mailbox configuration, and aliases are intentionally not documented in this public repository.
 
 ## Build Configuration
 
@@ -24,10 +34,11 @@ https://erikfryscok.pages.dev
 
 ### Build command details
 
-The build command `npm run build` runs two steps in sequence:
+The build command `npm run build` runs three steps in sequence:
 
 1. `npm run check` — Astro and TypeScript diagnostics
-2. `astro build` — static site generation to `dist/`
+2. `npm test` — repository regression tests
+3. `astro build` — static site generation to `dist/`
 
 ### Build output
 
@@ -39,7 +50,7 @@ None required. The site is fully static. No runtime configuration, API keys, or 
 
 ## Preview Workflow
 
-When the repository is connected to Cloudflare Pages via the GitHub integration:
+With the repository connected to Cloudflare Pages via the GitHub integration:
 
 1. A pull request is opened from a feature branch to `main`.
 2. Cloudflare Pages automatically checks out the feature branch.
