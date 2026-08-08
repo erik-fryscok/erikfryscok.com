@@ -13,6 +13,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 ### Added
 
+- Focused `/now` page with current professional and personal priorities, linked from the main navigation (issue #35).
 - Responsive, optimized portrait in the Home page hero (issue #33).
 - Home page with hero section, introduction, selected work grid, and contact CTA (issue #11).
 - Placeholder pages for About, Writing, and Projects with shared BaseLayout.
