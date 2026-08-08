@@ -34,11 +34,10 @@ Cloudflare manages the `erikfryscok.com` domain and its DNS, with the custom dom
 
 ### Build command details
 
-The build command `npm run build` runs three steps in sequence:
+The build command `npm run build` runs two steps in sequence:
 
 1. `npm run check` — Astro and TypeScript diagnostics
-2. `npm test` — repository regression tests
-3. `astro build` — static site generation to `dist/`
+2. `astro build` — static site generation to `dist/`
 
 ### Build output
 

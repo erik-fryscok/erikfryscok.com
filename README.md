@@ -21,8 +21,8 @@ The following npm scripts are available for local development:
 | --- | --- |
 | `npm run dev` | Start the Astro development server. |
 | `npm run check` | Run Astro and TypeScript diagnostics. |
-| `npm test` | Run repository regression tests. |
-| `npm run build` | Run diagnostics and regression tests, then create a production build. |
+| `npm test` | Create a production build and run repository regression tests. |
+| `npm run build` | Run diagnostics then create a production build. |
 | `npm run preview` | Serve the production build locally for verification. |
 
 ## Releases
