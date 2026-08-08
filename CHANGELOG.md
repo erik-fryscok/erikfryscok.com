@@ -14,6 +14,8 @@ The site may deploy continuously. This changelog records meaningful product rele
 ### Added
 
 - Flagship case study for erikfryscok.com, covering its static-site architecture, delivery workflow, custom domain, and domain email setup (issue #36).
+- Focused `/now` page with current professional and personal priorities, linked from the main navigation (issue #35).
+- Responsive, optimized portrait in the Home page hero (issue #33).
 - Home page with hero section, introduction, selected work grid, and contact CTA (issue #11).
 - Placeholder pages for About, Writing, and Projects with shared BaseLayout.
 - Cloudflare Pages preview deployment for pre-launch review.
@@ -26,6 +28,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 - Web App Manifest for Android Chrome home-screen installation (issue #24).
 - Site logo in navigation header replacing plain-text brand (issue #24).
 - Writing article: "OpenCode Configuration Guide" covering agent architecture, permission controls, and practical AI delivery ROI.
+- Writing article: "Why I Keep Coming Back to Codex" reflecting on coding-agent customization, evaluations, cost, and daily workflow.
 
 ### Changed
 
