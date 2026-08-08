@@ -25,6 +25,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 - Web App Manifest for Android Chrome home-screen installation (issue #24).
 - Site logo in navigation header replacing plain-text brand (issue #24).
 - Writing article: "OpenCode Configuration Guide" covering agent architecture, permission controls, and practical AI delivery ROI.
+- Writing article: "Why I Keep Coming Back to Codex" reflecting on coding-agent customization, evaluations, cost, and daily workflow.
 
 ### Changed
 
