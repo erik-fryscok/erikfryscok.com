@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+---
+
+<BaseLayout title="Why I Keep Coming Back to Codex — Erik Fryscok">
+  <article
+    class="max-w-3xl mx-auto text-gray-800 leading-relaxed [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-gray-900 [&_h2]:mt-10 [&_h2]:mb-4 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ul]:space-y-2"
+  >
+    <header class="mb-10">
+      <p class="text-sm text-gray-500 mb-2">Published: 2026-08-08</p>
+      <h1 class="text-3xl font-bold leading-tight mb-3">
+        Why I Keep Coming Back to Codex
+      </h1>
+      <p class="text-gray-700">
+        After a week of evaluating coding agents, customizing workflows, and watching
+        usage costs, I have landed back where these experiments often take me: Codex is
+        going to be my daily driver.
+      </p>
+    </header>
+
+    <p>
+      I have spent the past week going deep on coding agents: trying different tools,
+      customizing how they behave, and beginning to build evaluations for the prompts
+      and skills behind them. I wanted to understand not only which tool could generate
+      good code, but which one fit the way I actually work.
+    </p>
+    <p>
+      This is not a definitive ranking of every coding agent. These tools and models
+      change too quickly for that. It is a snapshot of what I tried, what I learned, and
+      why I keep returning to Codex.
+    </p>
+
+    <h2>What I loved about OpenCode</h2>
+    <p>
+      I truly enjoyed OpenCode. Its configuration is approachable, highly customizable,
+      and expressed in files I can keep with the rest of a project. It also makes it easy
+      to connect different AI providers and assign different models to different jobs.
+      That flexibility was one of the biggest reasons I wanted to explore it.
+    </p>
+    <p>
+      I started by creating a simple Chat agent. Sometimes I do not want an agent to
+      plan a feature or edit code. I just want to have a conversation—maybe about the
+      repository I am in, maybe about an idea that has nothing to do with it. Giving that
+      mode a read-only, conversational role made the boundary explicit.
+    </p>
+    <p>
+      I then adjusted the Plan and Build modes to better match my workflow and added a
+      dedicated Review agent. Review deserves to be its own primary mode because code
+      review is its own continuous activity. When I review a pull request or a Git diff,
+      I am usually thinking about code quality, security, architecture, documentation,
+      and the intent of the change at the same time. That is a distinct conversation,
+      not simply the end of Build.
+    </p>
+    <p>
+      In OpenCode, these roles can be described with focused Markdown instructions and
+      backed by configuration that controls their models and tools. The specific user
+      experience is convenient, but the larger lesson is portable: the behavior comes
+      from clear instructions and boundaries. Other coding agents can reproduce much of
+      it through skills, repository guidance, or their own agent systems.
+    </p>
+
+    <h2>Why evaluations became the next problem</h2>
+    <p>
+      Customizing an agent is only the beginning. I also want to know whether a prompt,
+      skill, or configuration reliably produces the result I intended. That led me into
+      building evaluations for my coding-agent setup.
+    </p>
+    <p>
+      You can judge an agent informally by looking at the code it produces, and that
+      feedback still matters. But structured evaluations become more valuable over time.
+      They make it possible to compare configurations, catch regressions, and improve a
+      workflow without relying entirely on memory or intuition.
+    </p>
+    <p>
+      I think that matters even more for teams. Every engineer has a different way of
+      working and prompting, but shared repository instructions, skills, formatting,
+      linting, and architectural guidance can still create a consistent delivery
+      standard. People do not need to use identical prompts to produce code that follows
+      the same expectations.
+    </p>
+
+    <h2>The cost changed how I felt about using the tool</h2>
+    <p>
+      The provider flexibility in OpenCode looked ideal for a personal project. I am
+      doing this to learn, not because the project is already producing a financial
+      return, so being able to select less expensive models for some roles and stronger
+      models for others was appealing.
+    </p>
+    <p>
+      I put $20 into OpenCode Zen and started experimenting. While working through the
+      evaluation feature, I used roughly $6 in one thread. It was a technical task with a
+      lot of exploration, so the number needs that context. Still, I was only a few days
+      into the cycle and had already used more than a quarter of the balance.
+    </p>
+    <p>
+      The bigger problem was not the single charge. It was the hesitation usage-based
+      billing introduced. I kept wondering how much each thread was consuming. I became
+      nervous about experimenting, even though experimentation was the entire point.
+    </p>
+    <p>
+      Direct API usage makes sense when I am integrating a model into an application and
+      can measure the economics of that feature. For day-to-day, hands-on development, I
+      have learned that I prefer the predictability of a subscription. I can work within
+      an allotted amount, use it freely, and decide later whether a higher tier or extra
+      credits are worthwhile.
+    </p>
+
+    <h2>Why the whole workflow matters</h2>
+    <p>
+      I have tried several tools over time, including Claude Code and other open and
+      hosted coding agents. Many of them are capable, and the competition is making all
+      of them better. But when I evaluate the complete workflow rather than one coding
+      session, I keep ending up back at ChatGPT and Codex.
+    </p>
+    <p>
+      Coding quality matters, but it is not the only requirement. I also care about the
+      surrounding integrations, the ability to move between conversation and
+      implementation, and the freedom to keep working when I am away from my desk.
+    </p>
+    <p>
+      I can start with a conversation, connect that context to a task, and ask Codex to
+      implement it. I can work with GitHub and the other services around my workflow. I
+      can use my phone when an idea arrives instead of waiting until I am back at my
+      computer. This article itself started as voice-to-text on my phone and became a
+      cloud task without requiring my machine to stay online.
+    </p>
+    <p>
+      That continuity is difficult to capture in a feature comparison. It is also the
+      reason the answer becomes obvious for me when I consider the day as a whole.
+    </p>
+
+    <h2>Keeping work and personal Codex environments separate</h2>
+    <p>
+      I use Codex in both work and personal contexts, so I wanted a clean boundary
+      between them. My solution is simple: separate Codex home directories with separate
+      logins and conversation histories.
+    </p>
+    <p>
+      I created short Raycast snippets that expand into the command for launching either
+      environment. I type a small character sequence, choose the environment, and start
+      the CLI or app with the appropriate Codex home. The setup gives me separation
+      without adding friction to every session.
+    </p>
+    <p>
+      It is not a complicated system, and that is the point. A small amount of local
+      configuration gives me a dependable boundary while preserving the same workflow in
+      both places.
+    </p>
+
+    <h2>Codex is my daily driver—for now</h2>
+    <p>
+      When I first tried Codex, there were parts of the experience that did not fit as
+      well as they do now. But this space improves remarkably quickly. The current
+      combination of capability, integrations, configurability, mobile access, and
+      predictable usage now checks the boxes that matter most to me.
+    </p>
+    <p>
+      I am also much more comfortable with the configuration than I was before. I am
+      learning how Codex uses its configuration, repository instructions, and skills,
+      and how to shape those pieces for myself and eventually for a team. There is still
+      plenty to optimize, but the system no longer feels opaque.
+    </p>
+    <p>
+      So this is where I am going to stay and work for a while. I will keep building
+      evaluations, refining skills, and testing the boundaries of the workflow instead
+      of repeatedly changing the tool underneath it.
+    </p>
+    <p>
+      That conclusion may change as the tools change. For now, though, Codex is my daily
+      driver. If I use all of the credits available to me, that will mean I learned where
+      the limits are—and learning where the limits are is part of the adventure.
+    </p>
+  </article>
+</BaseLayout>
