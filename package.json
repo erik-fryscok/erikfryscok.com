@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "test": "npm run build && node --test tests/*.test.mjs",
     "check": "astro check && tsc --noEmit",
     "build": "npm run check && astro build",
     "preview": "astro preview"
