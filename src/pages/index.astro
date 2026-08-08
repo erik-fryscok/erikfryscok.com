@@ -1,18 +1,33 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../components/BaseLayout.astro";
+import portrait from "../assets/erik-fryscok-portrait.jpg";
 ---
 
 <BaseLayout title="Erik Fryscok — Software Engineering Leadership">
   <!-- Hero Section -->
-  <section class="mb-16">
-    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-      Building better software teams with AI, automation, and modern engineering practices.
-    </h1>
-    <p class="mt-4 text-lg leading-relaxed text-gray-600 max-w-3xl">
-      I'm a software development team lead focused on engineering leadership,
-      AI-enabled development, cloud infrastructure, documentation, and practical
-      systems that help teams work more effectively.
-    </p>
+  <section class="mb-16 grid gap-8 md:grid-cols-[minmax(0,1fr)_16rem] md:items-center md:gap-10">
+    <div>
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+        Building better software teams with AI, automation, and modern engineering practices.
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-gray-600 max-w-3xl">
+        I'm a software development team lead focused on engineering leadership,
+        AI-enabled development, cloud infrastructure, documentation, and practical
+        systems that help teams work more effectively.
+      </p>
+    </div>
+    <Image
+      src={portrait}
+      alt="Erik Fryscok smiling outdoors with a city street in the background."
+      width={512}
+      height={512}
+      format="webp"
+      quality={80}
+      loading="eager"
+      fetchpriority="high"
+      class="mx-auto aspect-square w-full max-w-64 rounded-2xl object-cover shadow-sm md:mx-0"
+    />
   </section>
 
   <!-- Introduction Section -->
