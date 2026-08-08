@@ -5,6 +5,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 interface ProjectLink {
   label: string;
   href: string;
+  external: boolean;
 }
 
 interface Project {
@@ -17,47 +18,18 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Local AI Infrastructure for Software Teams",
+    title: "erikfryscok.com",
     description:
-      "A reference architecture for running open-weight AI models on local hardware to support code review, documentation generation, and developer tooling without sending sensitive code to external APIs.",
-    technologies: ["Rust", "Python", "Docker", "llama.cpp", "vLLM"],
+      "A public engineering home base delivered as a fast, static site with a practical workflow for planning, previews, owned infrastructure, and domain email.",
+    technologies: ["Astro", "TypeScript", "Tailwind CSS", "Cloudflare Pages", "GitHub", "Proton Mail"],
     outcomes: [
-      "Reduced dependency on external AI APIs for internal tooling",
-      "Demonstrated viable local inference for code completion and review",
-      "Published open reference implementations for community adoption",
+      "Static production site served without a server-side runtime",
+      "Cloudflare-managed domain and DNS with Proton Mail domain email",
+      "Public GitHub Issues and project board for delivery planning",
     ],
     links: [
-      { label: "Documentation", href: "/writing" },
-      { label: "Source", href: "https://github.com/erik-fryscok" },
-    ],
-  },
-  {
-    title: "Engineering Team Automation Toolkit",
-    description:
-      "A collection of reusable automation patterns for software teams — from CI/CD pipeline templates to documentation-as-code workflows that reduce operational overhead and improve consistency.",
-    technologies: ["TypeScript", "GitHub Actions", "Markdown", "Bash"],
-    outcomes: [
-      "Standardized onboarding across multiple teams",
-      "Reduced repetitive manual tasks by automating common workflows",
-      "Improved documentation quality through structured templates",
-    ],
-    links: [
-      { label: "Case Study", href: "/writing" },
-      { label: "Examples", href: "https://github.com/erik-fryscok" },
-    ],
-  },
-  {
-    title: "Cloud Infrastructure Migration Framework",
-    description:
-      "A structured approach for migrating legacy monolithic applications to cloud-native architectures using infrastructure-as-code, containerization, and gradual strangler-fig patterns.",
-    technologies: ["Terraform", "Kubernetes", "AWS", "Go", "Helm"],
-    outcomes: [
-      "Enabled zero-downtime migration for production services",
-      "Reduced infrastructure costs through right-sizing and auto-scaling",
-      "Established repeatable migration playbooks for future projects",
-    ],
-    links: [
-      { label: "Architecture Notes", href: "/writing" },
+      { label: "Read case study", href: "/projects/personal-website", external: false },
+      { label: "Source", href: "https://github.com/erik-fryscok/erikfryscok.com", external: true },
     ],
   },
 ];
@@ -67,13 +39,13 @@ const projects: Project[] = [
   <div class="max-w-4xl mx-auto">
     <h1 class="text-3xl font-bold mb-3">Projects</h1>
     <p class="text-gray-700 mb-10 max-w-2xl">
-      A curated selection of projects that demonstrate practical approaches to
-      engineering leadership, AI-enabled development, and modern infrastructure.
-      These are case studies focused on outcomes and patterns rather than
-      comprehensive repository listings.
+      Selected projects that demonstrate practical approaches to engineering
+      leadership, AI-enabled development, and modern infrastructure. Each case
+      study focuses on real delivery decisions and reusable lessons rather than
+      a comprehensive repository listing.
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 gap-6">
       {projects.map((project) => (
         <ProjectCard
           title={project.title}
@@ -84,5 +56,10 @@ const projects: Project[] = [
         />
       ))}
     </div>
+
+    <p class="mt-8 text-sm text-gray-600 max-w-2xl">
+      More selected work will appear here as it is ready to share publicly and
+      can support useful, evidence-based lessons.
+    </p>
   </div>
 </BaseLayout>

@@ -21,6 +21,7 @@ The following npm scripts are available for local development:
 | --- | --- |
 | `npm run dev` | Start the Astro development server. |
 | `npm run check` | Run Astro and TypeScript diagnostics. |
+| `npm test` | Create a production build and run repository regression tests. |
 | `npm run build` | Run diagnostics then create a production build. |
 | `npm run preview` | Serve the production build locally for verification. |
 
@@ -30,10 +31,10 @@ User-visible changes are recorded in [CHANGELOG.md](CHANGELOG.md). Formal produc
 
 ## Deployment
 
-This site is hosted on [Cloudflare Pages](https://pages.cloudflare.com/). The production URL is:
+This site is hosted on [Cloudflare Pages](https://pages.cloudflare.com/). The canonical production URL is:
 
 ```
-https://erikfryscok.pages.dev
+https://erikfryscok.com
 ```
 
-Preview deployments from feature branches are available through the Cloudflare Pages dashboard. See [the deployment documentation](docs/development/deployment.md) for build configuration and the preview workflow.
+Cloudflare Pages also provides `https://erikfryscok.pages.dev` as the platform endpoint. Preview deployments from feature branches are available through the Cloudflare Pages dashboard. See [the deployment documentation](docs/development/deployment.md) for build configuration and the preview workflow.
