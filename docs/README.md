@@ -42,6 +42,12 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #33: Home hero portrait](superpowers/plans/2026-08-07-home-hero-portrait.md) — responsive, optimized portrait placement in the Home page hero.
 
+- [GitHub issue #40: Agent Skills case study](superpowers/plans/2026-08-09-agent-skills-case-study.md) — leading project card, evidence-first technical case study, and release validation.
+
+## Design records
+
+- [Agent Skills case study design](superpowers/specs/2026-08-09-agent-skills-case-study-design.md) — approved positioning, content architecture, evidence boundaries, public interfaces, and responsive behavior.
+
 ## Opportunities and content
 
 - [Opportunity backlog](ideas/opportunities.md) — possible future business directions, not active commitments.

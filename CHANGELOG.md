@@ -14,6 +14,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 ### Added
 
+- Agent Skills leading project card, evidence-first case study, and CLI guidance for the `github-public-readiness` skill (issue #40).
 - Flagship case study for erikfryscok.com, covering its static-site architecture, delivery workflow, custom domain, and domain email setup (issue #36).
 - Focused `/now` page with current professional and personal priorities, linked from the main navigation (issue #35).
 - Responsive, optimized portrait in the Home page hero (issue #33).
