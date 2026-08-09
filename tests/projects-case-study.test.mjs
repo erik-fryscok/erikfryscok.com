@@ -50,6 +50,9 @@ test("Agent Skills leads the built projects page with case study and source link
 test("Agent Skills case study documents CLI use, prompts, output, and project links", async () => {
   const page = await readBuiltProject("projects/agent-skills");
 
+  assert.match(page, /Reusable, evidence-backed agent skills for practical software development\./);
+  assert.match(page, />Install or generate a one-off prompt<\/h2>/);
+  assert.match(page, /generate a one-off invocation prompt through the skills CLI/);
   assert.match(page, /npx skills add erik-fryscok\/skills/);
   assert.match(page, /npx skills use erik-fryscok\/skills@github-public-readiness/);
   assert.match(page, /Use \$github-public-readiness to audit this repository for safe public release and portfolio value\./);
