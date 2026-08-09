@@ -51,7 +51,7 @@ Current work, delivery status, and formal release scope are managed in the repos
 ## Deferred until there is a need
 
 - MDX
-- Sitemap and RSS
+- RSS
 - Syntax highlighting
 - Site search (useful after a substantial writing archive)
 - Newsletter

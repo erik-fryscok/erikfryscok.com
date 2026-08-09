@@ -3,16 +3,45 @@ import "../styles/global.css";
 
 interface Props {
   title: string;
+  description: string;
+  pageType?: "website" | "article";
+  indexable?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description, pageType = "website", indexable = true } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+
+const navigationItems = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/now", label: "Now" },
+  { href: "/writing", label: "Writing" },
+  { href: "/projects", label: "Projects" },
+  { href: "/contact", label: "Contact" },
+];
+
+function isCurrentRoute(href: string) {
+  if (href === "/") return Astro.url.pathname === "/";
+  return Astro.url.pathname === href || Astro.url.pathname.startsWith(`${href}/`);
+}
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Erik Fryscok — software engineering leadership, AI-enabled development, and modern practices." />
+    <meta name="description" content={description} />
+    {indexable && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={pageType} />
+    {indexable && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:site_name" content="Erik Fryscok" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {!indexable && <meta name="robots" content="noindex,follow" />}
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Primary favicon (modern browsers) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -33,12 +62,14 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-white text-gray-900 flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="border-b border-gray-200 relative">
       <nav class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between" aria-label="Main navigation">
         <a href="/" class="flex items-center gap-2 text-lg font-semibold text-gray-900 hover:text-gray-600 transition-colors">
           <img src="/logo.svg" alt="Erik Fryscok" class="h-8 w-auto" />
         </a>
         <button
+          type="button"
           id="mobile-menu-toggle"
           class="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"
           aria-expanded="false"
@@ -54,17 +85,22 @@ const { title } = Astro.props;
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <ul class="hidden lg:flex gap-6 list-none lg:static absolute top-full left-0 right-0 bg-white border-b border-gray-200 lg:border-none lg:bg-transparent lg:border-0 lg:top-auto lg:left-auto lg:right-auto p-4 lg:p-0 flex-col lg:flex-row lg:gap-6 lg:mt-0 mt-2" id="mobile-menu" role="menu">
-          <li role="menuitem"><a href="/" class="text-sm text-gray-600 hover:text-gray-900 transition-colors block py-2 lg:py-0">Home</a></li>
-          <li role="menuitem"><a href="/about" class="text-sm text-gray-600 hover:text-gray-900 transition-colors block py-2 lg:py-0">About</a></li>
-          <li role="menuitem"><a href="/now" class="text-sm text-gray-600 hover:text-gray-900 transition-colors block py-2 lg:py-0">Now</a></li>
-          <li role="menuitem"><a href="/writing" class="text-sm text-gray-600 hover:text-gray-900 transition-colors block py-2 lg:py-0">Writing</a></li>
-          <li role="menuitem"><a href="/projects" class="text-sm text-gray-600 hover:text-gray-900 transition-colors block py-2 lg:py-0">Projects</a></li>
-          <li role="menuitem"><a href="/contact" class="text-sm text-gray-600 hover:text-gray-900 transition-colors block py-2 lg:py-0">Contact</a></li>
+        <ul class="hidden lg:flex gap-6 list-none lg:static absolute top-full left-0 right-0 bg-white border-b border-gray-200 lg:border-none lg:bg-transparent lg:border-0 lg:top-auto lg:left-auto lg:right-auto p-4 lg:p-0 flex-col lg:flex-row lg:gap-6 lg:mt-0 mt-2" id="mobile-menu">
+          {navigationItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isCurrentRoute(item.href) ? "page" : undefined}
+                class="text-sm text-gray-600 hover:text-gray-900 transition-colors block py-2 lg:py-0"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
-    <main class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+    <main id="main-content" class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
       <slot />
     </main>
     <footer class="border-t border-gray-200">
@@ -89,6 +125,7 @@ const { title } = Astro.props;
       iconClose.classList.remove('hidden');
       iconClose.classList.add('block');
       toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close navigation menu');
     }
 
     function closeMenu() {
@@ -99,6 +136,7 @@ const { title } = Astro.props;
       iconClose.classList.add('hidden');
       iconClose.classList.remove('block');
       toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation menu');
     }
 
     toggle.addEventListener('click', () => {
