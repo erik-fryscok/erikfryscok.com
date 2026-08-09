@@ -38,6 +38,8 @@ This directory is the durable, versioned context for the website. It is written 
 
 - [GitHub issue #25: Mobile navigation fix](superpowers/plans/2026-07-25-mobile-navigation.md) — hamburger menu toggle, overlay behavior, and responsive nav layout.
 
+- [GitHub issue #7: Public launch readiness](plans/github-issue-7-launch-readiness.md) — accessibility, SEO, sitemap, 404, and release-validation work.
+
 - [GitHub issue #33: Home hero portrait](superpowers/plans/2026-08-07-home-hero-portrait.md) — responsive, optimized portrait placement in the Home page hero.
 
 ## Opportunities and content
@@ -48,6 +50,7 @@ This directory is the durable, versioned context for the website. It is written 
 ## Development
 
 - [Cloudflare Pages preview deployment](development/deployment.md) — build configuration, preview workflow, and local preview commands.
+- [Launch readiness](development/launch-readiness.md) — repeatable automated, preview, production, and release-note validation gates.
 
 ## Conventions
 

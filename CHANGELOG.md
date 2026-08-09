@@ -10,6 +10,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 - Mobile navigation overflow — added hamburger menu for screens below 1024px (issue #25).
 - Corrected LinkedIn profile URL slug on Contact page (`erik-fryscok`).
+- Added a dedicated 404 page so unknown routes return a proper error response instead of Home content (issue #7).
 
 ### Added
 
@@ -29,6 +30,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 - Site logo in navigation header replacing plain-text brand (issue #24).
 - Writing article: "OpenCode Configuration Guide" covering agent architecture, permission controls, and practical AI delivery ROI.
 - Writing article: "Why I Keep Coming Back to Codex" reflecting on coding-agent customization, evaluations, cost, and daily workflow.
+- Per-page canonical, Open Graph, and Twitter metadata; generated sitemap discovery; and keyboard skip navigation (issue #7).
 
 ### Changed
 
