@@ -71,6 +71,15 @@ const pages = [
     pageType: "article",
   },
   {
+    path: "/projects/agent-skills",
+    file: "dist/projects/agent-skills/index.html",
+    title: "Agent Skills — Project Case Study",
+    heading: "Agent Skills",
+    description:
+      "How Agent Skills packages evidence-backed software-development workflows for direct use by AI coding agents.",
+    pageType: "article",
+  },
+  {
     path: "/contact",
     file: "dist/contact/index.html",
     title: "Contact — Erik Fryscok",
@@ -125,6 +134,7 @@ test("each public route emits unique, production-ready metadata", async () => {
     assert.match(html, new RegExp(`<meta name="twitter:description" content="${page.description}">`));
     assert.match(html, /<link rel="sitemap" href="\/sitemap-index\.xml">/);
     assert.equal((html.match(/<h1\b/g) ?? []).length, 1, `${page.path} needs one h1`);
+    if (page.heading) assert.match(html, new RegExp(`<h1[^>]*>${page.heading}</h1>`));
 
     for (const image of html.match(/<img\b[^>]*>/g) ?? []) {
       assert.match(image, /\balt="[^"]*"/, `${page.path} has an image without alt text`);

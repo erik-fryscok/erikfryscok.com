@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+
+const sourceRepository = "https://github.com/erik-fryscok/skills";
+const firstSkill = `${sourceRepository}/tree/main/skills/github-public-readiness`;
+
+const prompts = [
+  "Use $github-public-readiness to audit this repository for safe public release and portfolio value.",
+  "Audit this repository before I make it public. Prioritize disclosure risks and the smallest release checklist; do not modify files or visibility.",
+  "Assess whether this repository is worth featuring in my portfolio, keeping public safety and showcase value as separate verdicts.",
+];
+---
+
+<BaseLayout
+  title="Agent Skills — Project Case Study"
+  description="How Agent Skills packages evidence-backed software-development workflows for direct use by AI coding agents."
+  pageType="article"
+>
+  <article class="max-w-3xl mx-auto">
+    <header class="mb-12">
+      <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-3">Open-source AI tooling</p>
+      <h1 class="text-3xl font-bold mb-4">Agent Skills</h1>
+      <p class="text-lg text-gray-700 max-w-2xl">
+        Reusable, evidence-backed agent skills for practical software development.
+      </p>
+    </header>
+
+    <section class="mb-10" aria-labelledby="problem">
+      <h2 id="problem" class="text-2xl font-semibold mb-3">Problem and purpose</h2>
+      <p class="text-gray-700">
+        Agent instructions are easy to write but harder to make dependable. A useful skill needs a clear trigger, a bounded workflow, explicit safety rules, and an output another person can verify. Agent Skills provides a public home for developing those pieces together, starting with an audit for repositories being considered for public release.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="anatomy">
+      <h2 id="anatomy" class="text-2xl font-semibold mb-3">Anatomy of a skill package</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="border border-gray-200 rounded-lg p-5">
+          <h3 class="font-semibold mb-2"><code>SKILL.md</code></h3>
+          <p class="text-sm text-gray-700">Defines when the skill applies, the workflow to follow, safety boundaries, and evidence standards.</p>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-5">
+          <h3 class="font-semibold mb-2"><code>references/</code></h3>
+          <p class="text-sm text-gray-700">Keeps the detailed audit rubric and report template available without overloading the core instructions.</p>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-5">
+          <h3 class="font-semibold mb-2"><code>agents/</code></h3>
+          <p class="text-sm text-gray-700">Supplies agent-facing metadata so supported tools can present the skill consistently.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10" aria-labelledby="execution-flow">
+      <h2 id="execution-flow" class="text-2xl font-semibold mb-3"><code>github-public-readiness</code> execution flow</h2>
+      <ol class="space-y-3 text-gray-700 list-decimal pl-5">
+        <li><strong>Establish scope:</strong> inspect the repository, history, documentation, dependencies, automation, and available release artifacts.</li>
+        <li><strong>Find disclosure risks:</strong> use targeted checks for credentials, private material, internal references, production data, and problematic history.</li>
+        <li><strong>Check usability and hygiene:</strong> assess whether the project purpose, setup, license, tests, and maintenance state are understandable.</li>
+        <li><strong>Judge portfolio value separately:</strong> evaluate what the repository demonstrates without confusing showcase value with publication safety.</li>
+        <li><strong>Report evidence:</strong> give a readiness classification, concrete findings, uncertainty, and the smallest ordered release checklist.</li>
+      </ol>
+    </section>
+
+    <section class="mb-10" aria-labelledby="safety">
+      <h2 id="safety" class="text-2xl font-semibold mb-3">Safety and evidence design</h2>
+      <p class="text-gray-700 mb-4">
+        The skill is advisory by default. It does not change visibility, publish code, rewrite history, delete files, or rotate credentials unless that additional action is explicitly authorized. Possible secrets are treated as leads to verify, and any real credential is redacted from the report.
+      </p>
+      <p class="text-gray-700">
+        Findings are expected to point to file paths, commits, command output, or reproducible checks. Missing access and checks that could not run are reported as limitations instead of being silently converted into confidence.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="foundation">
+      <h2 id="foundation" class="text-2xl font-semibold mb-3">A reusable foundation</h2>
+      <p class="text-gray-700">
+        The repository structure separates compact agent instructions from deeper references and output formats. That gives future skills a repeatable package shape while leaving room for plugin manifests that bundle related skills. Standalone plugins or MCP products can still move into dedicated repositories when their release and maintenance needs become distinct.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="use">
+      <h2 id="use" class="text-2xl font-semibold mb-3">Install or generate a one-off prompt</h2>
+      <p class="text-gray-700 mb-4">Add the collection to a supported agent environment:</p>
+      <pre class="overflow-x-auto rounded-lg bg-gray-950 p-4 text-sm text-gray-100 mb-6"><code>npx skills add erik-fryscok/skills</code></pre>
+      <p class="text-gray-700 mb-4">Or generate a one-off invocation prompt through the skills CLI:</p>
+      <pre class="overflow-x-auto rounded-lg bg-gray-950 p-4 text-sm text-gray-100"><code>npx skills use erik-fryscok/skills@github-public-readiness</code></pre>
+    </section>
+
+    <section class="mb-10" aria-labelledby="prompts">
+      <h2 id="prompts" class="text-2xl font-semibold mb-3">Example prompts</h2>
+      <div class="space-y-4">
+        {prompts.map((prompt) => (
+          <div class="overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-800">
+            <code class="whitespace-pre-wrap break-words">{prompt}</code>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-10" aria-labelledby="report">
+      <h2 id="report" class="text-2xl font-semibold mb-3">Expected report output</h2>
+      <p class="text-gray-700">
+        The result includes a readiness classification, a separate portfolio judgment, evidence-linked findings, an ordered release checklist, and the verification performed. It also states confidence and important limitations so the recommendation can be reviewed rather than accepted on authority.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="demonstrates">
+      <h2 id="demonstrates" class="text-2xl font-semibold mb-3">What this demonstrates</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li>Turning an ambiguous engineering review into a scoped, repeatable agent workflow.</li>
+        <li>Designing safety boundaries that keep analysis separate from consequential repository changes.</li>
+        <li>Making recommendations traceable to evidence, uncertainty, and reproducible verification.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="explore">
+      <h2 id="explore" class="text-2xl font-semibold mb-3">Explore the project</h2>
+      <div class="flex flex-wrap gap-4">
+        <a href={sourceRepository} class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" rel="noopener noreferrer">View the repository</a>
+        <a href={firstSkill} class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" rel="noopener noreferrer">View <code>github-public-readiness</code></a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
