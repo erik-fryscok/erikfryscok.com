@@ -24,15 +24,15 @@
 - Modify: `src/pages/projects.astro`
 - Create: `src/pages/projects/agent-skills.astro`
 
-- [ ] **Step 1: Write failing output-focused tests**
+- **Step 1: Write failing output-focused tests**
 
 Extend `tests/projects-case-study.test.mjs` to verify that the built `/projects` output features `Agent Skills` before `erikfryscok.com`, links internally to `/projects/agent-skills`, and links externally to `https://github.com/erik-fryscok/skills`. Verify the built case study contains the two CLI commands, the first skill slug, all three example prompts, expected report output, and links to the repository and first skill.
 
-- [ ] **Step 2: Run the focused test and confirm RED**
+- **Step 2: Run the focused test and confirm RED**
 
 Run `npm test -- --test-name-pattern='Agent Skills'` or the closest supported focused command. Confirm the new assertions fail because the card and route do not yet exist.
 
-- [ ] **Step 3: Add Agent Skills first on `/projects`**
+- **Step 3: Add Agent Skills first on `/projects`**
 
 Add an `Agent Skills` project entry before the existing personal website entry. Use the existing `ProjectCard` interface unchanged, with an internal `Read case study` link and an external `Source` link.
 
@@ -42,7 +42,7 @@ Use this evidence-bounded card content:
 - Technologies: `Agent Skills`, `Markdown`, `YAML`, `GitHub`
 - Outcomes: an evidence-based GitHub public-readiness audit; separation of workflow guidance, evaluation criteria, and reporting structure; an MIT-licensed foundation for future agent tooling
 
-- [ ] **Step 4: Build the case-study route**
+- **Step 4: Build the case-study route**
 
 Create `/projects/agent-skills` using `BaseLayout` and the established narrow case-study presentation. Include:
 
@@ -74,7 +74,7 @@ Assess whether this repository is worth featuring in my portfolio, keeping publi
 
 Describe the expected report as a readiness classification, a separate portfolio judgment, evidence-linked findings, an ordered release checklist, and the verification performed.
 
-- [ ] **Step 5: Run the tests and confirm GREEN**
+- **Step 5: Run the tests and confirm GREEN**
 
 Run `npm test`; expect all tests and the production build to pass, with `dist/projects/agent-skills/index.html` generated.
 
@@ -87,23 +87,23 @@ Run `npm test`; expect all tests and the production build to pass, with `dist/pr
 - Modify: `CHANGELOG.md`
 - Verify: `docs/superpowers/plans/2026-08-09-agent-skills-case-study.md`
 
-- [ ] **Step 1: Write the design record**
+- **Step 1: Write the design record**
 
 Document the approved project positioning, content structure, evidence boundaries, CLI examples, responsive behavior, and repository-name rationale.
 
-- [ ] **Step 2: Update the documentation index**
+- **Step 2: Update the documentation index**
 
 Link both the design record and this implementation plan from `docs/README.md` using the existing index structure.
 
-- [ ] **Step 3: Add the decision-log entry**
+- **Step 3: Add the decision-log entry**
 
 Record the 2026-08-09 decision to use the generic `erik-fryscok/skills` collection name because the skills CLI and skills.sh foreground individual skill names while retaining `owner/repo` as source provenance. State that standalone MCP products or plugins can still receive separate repositories when appropriate.
 
-- [ ] **Step 4: Update the Unreleased changelog**
+- **Step 4: Update the Unreleased changelog**
 
 Under `Unreleased` → `Added`, record the Agent Skills project card, case study, and CLI guidance, referencing website issue `#40`.
 
-- [ ] **Step 5: Validate documentation**
+- **Step 5: Validate documentation**
 
 Run `git diff --check`, inspect changed Markdown links, and run the relevant documentation/link tests if present.
 
@@ -112,18 +112,18 @@ Run `git diff --check`, inspect changed Markdown links, and run the relevant doc
 **Files:**
 - Verify: generated Astro output and all changed files
 
-- [ ] **Step 1: Run diagnostics and tests**
+- **Step 1: Run diagnostics and tests**
 
 Run `npm run check` and `npm test`; expect exit code 0 for both.
 
-- [ ] **Step 2: Verify generated output**
+- **Step 2: Verify generated output**
 
 Confirm `dist/projects/agent-skills/index.html` exists and contains `github-public-readiness`, both CLI commands, and the repository/skill links.
 
-- [ ] **Step 3: Search for stale repository references**
+- **Step 3: Search for stale repository references**
 
 Search the website and skills repositories for unintended `developer-skills` names or URLs. Historical planning context may be reported separately; user-visible or active links must use `erik-fryscok/skills`.
 
-- [ ] **Step 4: Review responsive presentation**
+- **Step 4: Review responsive presentation**
 
 Run the built site locally and inspect `/projects` and `/projects/agent-skills` at 375px and 1280px. Verify prompt overflow, readable hierarchy, and internal/external link behavior.
