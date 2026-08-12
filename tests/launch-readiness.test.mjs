@@ -9,9 +9,9 @@ const pages = [
   {
     path: "/",
     file: "dist/index.html",
-    title: "Erik Fryscok — Software Engineering Leadership",
+    title: "Erik Fryscok — Practical AI Systems for Software Development",
     description:
-      "Erik Fryscok on software engineering leadership, AI-enabled development, cloud infrastructure, and practical systems for better teams.",
+      "Erik Fryscok builds and evaluates AI systems for software development, including coding-agent workflows, local-model experiments, evaluations, and developer tooling.",
     pageType: "website",
   },
   {
