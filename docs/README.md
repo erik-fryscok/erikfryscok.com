@@ -16,6 +16,8 @@ This directory is the durable, versioned context for the website. It is written 
 
 ## Implementation plans
 
+- [GitHub issue #42: AI developer website repositioning](superpowers/plans/2026-08-12-ai-developer-repositioning.md) — approved implementation sequence for calibrated AI-developer positioning, an experimental Local AI Lab case study, and supporting-page alignment.
+
 - [GitHub issue #1: personal website launch](plans/github-issue-1-launch-personal-website.md) — initiative sequencing, dependencies, concurrency, and launch gates.
 
 - [GitHub issue #2: Astro, TypeScript, and Tailwind foundation](plans/github-issue-2-astro-foundation.md) — the implementation approach and validation contract for the initial development foundation.
@@ -45,6 +47,8 @@ This directory is the durable, versioned context for the website. It is written 
 - [GitHub issue #40: Agent Skills case study](superpowers/plans/2026-08-09-agent-skills-case-study.md) — leading project card, evidence-first technical case study, and release validation.
 
 ## Design records
+
+- [AI developer website repositioning design](superpowers/specs/2026-08-12-ai-developer-repositioning-design.md) — approved identity, evidence order, Local AI Lab boundaries, and validation criteria.
 
 - [Agent Skills case study design](superpowers/specs/2026-08-09-agent-skills-case-study-design.md) — approved positioning, content architecture, evidence boundaries, public interfaces, and responsive behavior.
 
