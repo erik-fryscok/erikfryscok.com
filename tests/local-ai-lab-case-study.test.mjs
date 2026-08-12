@@ -30,7 +30,7 @@ test("Local AI Lab leads Projects with calibrated framing and working project li
   assert.ok(agentSkillsPosition < websitePosition, "expected Agent Skills before erikfryscok.com");
   assert.match(
     html,
-    /<div><p[^>]*>EXPERIMENTAL<\/p><article[^>]*><h2[^>]*>Local AI Lab<\/h2>/,
+    /<article[^>]*><p[^>]*>EXPERIMENTAL<\/p><h2[^>]*>Local AI Lab<\/h2>/,
   );
   assert.ok(visibleText.includes(projectsIntroduction));
   assert.ok(visibleText.includes(projectDescription));

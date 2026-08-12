@@ -81,20 +81,14 @@ const projects: Project[] = [
 
     <div class="grid grid-cols-1 gap-6">
       {projects.map((project) => (
-        <div>
-          {project.supportingLabel && (
-            <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-2">
-              {project.supportingLabel}
-            </p>
-          )}
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            technologies={project.technologies}
-            outcomes={project.outcomes}
-            links={project.links}
-          />
-        </div>
+        <ProjectCard
+          title={project.title}
+          supportingLabel={project.supportingLabel}
+          description={project.description}
+          technologies={project.technologies}
+          outcomes={project.outcomes}
+          links={project.links}
+        />
       ))}
     </div>
 
