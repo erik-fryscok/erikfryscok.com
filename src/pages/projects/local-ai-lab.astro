@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+
+const sourceRepository = "https://github.com/erik-fryscok/local-ai-lab";
+const benchmarkCommands = `./scripts/lab bench-llama coder --all-candidates
+./scripts/lab bench-server coder --all-candidates --unload-after
+./scripts/lab bench-quality coder --all-candidates`;
+---
+
+<BaseLayout
+  title="Local AI Lab — Experimental AI Project"
+  description="How Erik Fryscok uses Local AI Lab to learn about local-model routing, lifecycle, compatibility, evaluation, and the boundary between local and frontier AI."
+  pageType="article"
+>
+  <article class="max-w-3xl mx-auto">
+    <header class="mb-12">
+      <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-3">Experimental AI lab</p>
+      <h1 class="text-3xl font-bold mb-4">Local AI Lab</h1>
+      <p class="text-lg text-gray-700 max-w-2xl">
+        A learning playground and evaluation testbed for understanding where local and open-weight models can help with software-development work—and where their demonstrated capability ends.
+      </p>
+    </header>
+
+    <section class="mb-10" aria-labelledby="experimental-lab">
+      <h2 id="experimental-lab" class="text-2xl font-semibold mb-3">An experimental AI lab</h2>
+      <p class="text-gray-700 mb-4">
+        Local AI Lab makes model routing, lifecycle management, compatibility checks, and repeatable evaluation concrete enough to study. It supports experiments on one local machine; it is not a deployment recommendation for other people or teams.
+      </p>
+      <aside class="rounded-lg border border-amber-300 bg-amber-50 p-5 text-amber-950">
+        <p>
+          <strong>Production limit:</strong> Local AI Lab is not production infrastructure, a production architecture, a team-wide solution, or a replacement for frontier cloud models. It is an experimental learning and evaluation environment.
+        </p>
+      </aside>
+    </section>
+
+    <section class="mb-10" aria-labelledby="explores">
+      <h2 id="explores" class="text-2xl font-semibold mb-3">What the lab explores</h2>
+      <p class="text-gray-700">
+        The lab exposes workload-specific, OpenAI-compatible aliases through one local endpoint. Its router can load the requested alias, evict a previous generation model, forward the request, and later unload an idle model. A curated catalog records each model's intended role and lifecycle so candidates can be tested before they become part of the core fleet.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="useful">
+      <h2 id="useful" class="text-2xl font-semibold mb-3">Where local models are useful</h2>
+      <p class="text-gray-700">
+        Local models can be useful for bounded experiments, small targeted changes, fixes, repository exploration, and other work with a clear acceptance contract. These are candidate workloads to evaluate, not a promise that every model will complete every task successfully.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="limits">
+      <h2 id="limits" class="text-2xl font-semibold mb-3">Where they fall short</h2>
+      <p class="text-gray-700">
+        Local models fall short for higher-stakes, ambiguous, complex, large-context, or reliability-critical work when their results do not meet the task's evidence bar. A fast answer, a plausible answer, or a larger local model does not establish that the work is safe or correct.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="escalate">
+      <h2 id="escalate" class="text-2xl font-semibold mb-3">When to escalate</h2>
+      <p class="text-gray-700">
+        Flagship frontier cloud models are the escalation path when risk or complexity exceeds demonstrated local capability. Missed acceptance criteria, malformed tool calls, repeated human repair, insufficient context, and observed quality gaps are signals to escalate rather than stretch a local model beyond the evidence.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="compatibility">
+      <h2 id="compatibility" class="text-2xl font-semibold mb-3">Compatibility before promotion</h2>
+      <p class="text-gray-700">
+        A candidate must load through its OpenAI-compatible alias, return a visible completion, produce non-streaming structured tool calls and streaming tool-call deltas, preserve the configured residency rule, and unload cleanly. Promotion also requires real tool loops in supported coding-agent clients; an answer that merely looks correct is not proof that a tool ran.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="evaluation">
+      <h2 id="evaluation" class="text-2xl font-semibold mb-3">Layered evaluation</h2>
+      <p class="text-gray-700 mb-4">
+        The lab separates raw runtime throughput, the end-to-end request path, and task quality. That keeps speed and memory measurements subordinate to whether the result meets automated acceptance criteria and survives human review.
+      </p>
+      <pre class="max-w-full overflow-x-auto rounded-lg bg-gray-950 p-4 text-sm text-gray-100"><code>{benchmarkCommands}</code></pre>
+      <ul class="space-y-3 text-gray-700 mt-4">
+        <li><code>bench-llama</code> isolates model and runtime throughput.</li>
+        <li><code>bench-server</code> measures the OpenAI-compatible router path and request latency.</li>
+        <li><code>bench-quality</code> records answers for correctness checks and manual review by default.</li>
+      </ul>
+    </section>
+
+    <section class="mb-10" aria-labelledby="evidence">
+      <h2 id="evidence" class="text-2xl font-semibold mb-3">Evidence boundaries</h2>
+      <p class="text-gray-700">
+        Public claims stay at the level of reproducible interfaces and methods. Raw model answers, benchmark artifacts, local paths, host details, private repository metadata, credentials, and machine-specific configuration remain unpublished. Results are not generalized into model parity, superiority, guaranteed privacy, or suitability for untested workloads.
+      </p>
+    </section>
+
+    <section class="mb-10" aria-labelledby="demonstrates">
+      <h2 id="demonstrates" class="text-2xl font-semibold mb-3">What this demonstrates</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li>Designing a small model-routing system around stable workload aliases and explicit lifecycle state.</li>
+        <li>Testing client compatibility with observable completions and real structured tool calls.</li>
+        <li>Separating performance, end-to-end behavior, and task quality while making escalation part of the evaluation method.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="explore">
+      <h2 id="explore" class="text-2xl font-semibold mb-3">Explore the project</h2>
+      <a href={sourceRepository} class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" rel="noopener noreferrer">View the Local AI Lab source</a>
+    </section>
+  </article>
+</BaseLayout>

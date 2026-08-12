@@ -80,6 +80,15 @@ const pages = [
     pageType: "article",
   },
   {
+    path: "/projects/local-ai-lab",
+    file: "dist/projects/local-ai-lab/index.html",
+    title: "Local AI Lab — Experimental AI Project",
+    heading: "Local AI Lab",
+    description:
+      "How Erik Fryscok uses Local AI Lab to learn about local-model routing, lifecycle, compatibility, evaluation, and the boundary between local and frontier AI.",
+    pageType: "article",
+  },
+  {
     path: "/contact",
     file: "dist/contact/index.html",
     title: "Contact — Erik Fryscok",

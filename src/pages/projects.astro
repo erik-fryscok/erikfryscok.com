@@ -10,6 +10,7 @@ interface ProjectLink {
 
 interface Project {
   title: string;
+  supportingLabel?: string;
   description: string;
   technologies: string[];
   outcomes: string[];
@@ -17,6 +18,22 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    title: "Local AI Lab",
+    supportingLabel: "Experimental AI lab",
+    description:
+      "An experimental learning and evaluation environment for local and open-weight models, exploring routing, model lifecycle, compatibility, benchmarks, and the boundary between useful local work and tasks that still require frontier cloud models.",
+    technologies: ["Python", "llama.cpp", "OpenAI-compatible APIs", "Hugging Face", "JSONL"],
+    outcomes: [
+      "One endpoint with workload-specific model aliases and managed model lifecycle",
+      "Compatibility gates for visible completions and structured tool calls",
+      "Layered throughput, server-path, and quality evaluation workflows",
+    ],
+    links: [
+      { label: "Read case study", href: "/projects/local-ai-lab", external: false },
+      { label: "Source", href: "https://github.com/erik-fryscok/local-ai-lab", external: true },
+    ],
+  },
   {
     title: "Agent Skills",
     description:
@@ -57,21 +74,27 @@ const projects: Project[] = [
   <div class="max-w-4xl mx-auto">
     <h1 class="text-3xl font-bold mb-3">Projects</h1>
     <p class="text-gray-700 mb-10 max-w-2xl">
-      Selected projects that demonstrate practical approaches to engineering
-      leadership, AI-enabled development, and modern infrastructure. Each case
-      study focuses on real delivery decisions and reusable lessons rather than
-      a comprehensive repository listing.
+      Selected projects showing how I build, test, and reason about AI developer
+      systems. Local AI Lab is an experimental learning environment; Agent
+      Skills is the more directly reusable developer workflow project.
     </p>
 
     <div class="grid grid-cols-1 gap-6">
       {projects.map((project) => (
-        <ProjectCard
-          title={project.title}
-          description={project.description}
-          technologies={project.technologies}
-          outcomes={project.outcomes}
-          links={project.links}
-        />
+        <div>
+          {project.supportingLabel && (
+            <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-2">
+              {project.supportingLabel}
+            </p>
+          )}
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            technologies={project.technologies}
+            outcomes={project.outcomes}
+            links={project.links}
+          />
+        </div>
       ))}
     </div>
 
