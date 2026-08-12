@@ -1,6 +1,6 @@
 # Content Backlog
 
-These topics reinforce the working positioning: engineering leadership plus practical enterprise AI. They are prompts to refine, not publishing commitments.
+These topics support the durable positioning around practical AI systems for software development. Ideas should be evidence-aware and capability-calibrated: distinguish experiments from production systems, document limitations, and name when frontier cloud models are the appropriate choice. They are prompts to refine, not publishing commitments.
 
 ## AI and engineering teams
 

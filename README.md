@@ -1,5 +1,5 @@
 # erikfryscok.com
-Personal website and blog focused on engineering leadership, AI-enabled development, automation, and modern software practices.
+Personal website and technical portfolio focused on AI systems for software development, including coding agents, evaluations, local-model experiments, developer tooling, and engineering leadership.
 
 ## Current focus
 
