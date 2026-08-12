@@ -8,6 +8,11 @@ const projectDescription =
   "An experimental learning and evaluation environment for local and open-weight models, exploring routing, model lifecycle, compatibility, benchmarks, and the boundary between useful local work and tasks that still require frontier cloud models.";
 const projectsIntroduction =
   "Selected projects showing how I build, test, and reason about AI developer systems. Local AI Lab is an experimental learning environment; Agent Skills is the more directly reusable developer workflow project.";
+const prohibitedClaimPatterns = [
+  /\b(?:is|appears|offers|provides|serves as)\s+(?!not\b)(?:(?:an?\s+)?production(?:-ready)?(?:\s+(?:solution|architecture|infrastructure|system))?|ready\s+for\s+production)\b/i,
+  /\b(?:(?:can\s+)?replaces?|(?:is|serves as)\s+(?!not\b)(?:a\s+)?replacement for)\s+(?:flagship\s+)?frontier(?:\s+cloud)?\s+models\b/i,
+  /\b(?:viable|suitable|effective|ready|works)\s+for\s+(?:every|all)\s+workloads?\b/i,
+];
 
 async function readBuiltFile(path) {
   return readFile(new URL(path, root), "utf8");
@@ -23,7 +28,10 @@ test("Local AI Lab leads Projects with calibrated framing and working project li
   assert.ok(localLabPosition >= 0, "expected Local AI Lab on Projects");
   assert.ok(localLabPosition < agentSkillsPosition, "expected Local AI Lab before Agent Skills");
   assert.ok(agentSkillsPosition < websitePosition, "expected Agent Skills before erikfryscok.com");
-  assert.match(html, /Experimental AI lab/);
+  assert.match(
+    html,
+    /<div><p[^>]*>Experimental AI lab<\/p><article[^>]*><h2[^>]*>Local AI Lab<\/h2>/,
+  );
   assert.ok(visibleText.includes(projectsIntroduction));
   assert.ok(visibleText.includes(projectDescription));
   for (const evidence of [
@@ -78,16 +86,28 @@ test("Local AI Lab documents compatibility, layered evaluation, and bounded use"
   assert.match(html, /<pre class="[^"]*overflow-x-auto[^"]*">/);
   assert.match(html, new RegExp(`href="${sourceRepository}"`));
 
-  assert.doesNotMatch(
-    html,
-    /\b(?:is|appears|offers|provides|serves as)\s+(?!not\b)(?:an?\s+)?production(?:-ready)?(?:\s+(?:solution|architecture|infrastructure|system))?\b/i,
+  for (const pattern of prohibitedClaimPatterns) assert.doesNotMatch(html, pattern);
+});
+
+test("claim guards reject direct prohibited variants but allow explicit boundaries", () => {
+  const prohibitedClaims = [
+    "Local AI Lab is a replacement for frontier cloud models.",
+    "Local AI Lab is ready for production.",
+  ];
+  const missedClaims = prohibitedClaims.filter(
+    (claim) => !prohibitedClaimPatterns.some((pattern) => pattern.test(claim)),
   );
-  assert.doesNotMatch(
-    html,
-    /\b(?:(?:can\s+)?replaces?|serves as\s+(?!not\b)(?:a\s+)?replacement for)\s+(?:flagship\s+)?frontier(?:\s+cloud)?\s+models\b/i,
-  );
-  assert.doesNotMatch(
-    html,
-    /\b(?:viable|suitable|effective|ready|works)\s+for\s+(?:every|all)\s+workloads?\b/i,
-  );
+
+  assert.deepEqual(missedClaims, [], "expected guards to reject every prohibited claim variant");
+
+  for (const boundary of [
+    "Local AI Lab is not production infrastructure.",
+    "Local AI Lab is not a replacement for frontier cloud models.",
+  ]) {
+    assert.equal(
+      prohibitedClaimPatterns.some((pattern) => pattern.test(boundary)),
+      false,
+      `expected guard to allow: ${boundary}`,
+    );
+  }
 });
