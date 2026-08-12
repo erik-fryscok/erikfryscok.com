@@ -14,11 +14,11 @@ Create a professional home base that explains who Erik is, demonstrates useful t
 
 **Headline**
 
-> Building better software teams with AI, automation, and modern engineering practices.
+> Building practical AI systems for software development.
 
 **Supporting copy**
 
-> I’m a software development team lead focused on engineering leadership, AI-enabled development, cloud infrastructure, documentation, and practical systems that help teams work more effectively.
+> I’m a software development team lead and hands-on engineer working with coding agents, local and open-weight models, developer tooling, evaluations, cloud infrastructure, and the systems that help engineering teams ship better software.
 
 ## First release scope
 

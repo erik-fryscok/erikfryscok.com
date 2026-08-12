@@ -9,9 +9,9 @@ const pages = [
   {
     path: "/",
     file: "dist/index.html",
-    title: "Erik Fryscok — Software Engineering Leadership",
+    title: "Erik Fryscok — Practical AI Systems for Software Development",
     description:
-      "Erik Fryscok on software engineering leadership, AI-enabled development, cloud infrastructure, and practical systems for better teams.",
+      "Erik Fryscok builds and evaluates AI systems for software development, including coding-agent workflows, local-model experiments, evaluations, and developer tooling.",
     pageType: "website",
   },
   {
@@ -19,7 +19,7 @@ const pages = [
     file: "dist/about/index.html",
     title: "About — Erik Fryscok",
     description:
-      "Learn how Erik Fryscok approaches engineering leadership, AI-enabled development, documentation, developer experience, and sustainable software delivery.",
+      "Learn how Erik Fryscok combines hands-on AI/software engineering with leadership experience across agents, evaluations, model experiments, developer tooling, and reliable delivery.",
     pageType: "website",
   },
   {
@@ -27,7 +27,7 @@ const pages = [
     file: "dist/now/index.html",
     title: "Now — Erik Fryscok",
     description:
-      "What Erik Fryscok is focused on now: better engineering systems, practical AI-enabled development, guitar, and local cycling.",
+      "What Erik Fryscok is focused on now: AI developer systems, local-model experiments, agent workflows, guitar, and local cycling.",
     pageType: "website",
   },
   {
@@ -35,7 +35,7 @@ const pages = [
     file: "dist/writing/index.html",
     title: "Writing — Erik Fryscok",
     description:
-      "Articles by Erik Fryscok on engineering leadership, AI-enabled development, cloud infrastructure, documentation, and practical software systems.",
+      "Articles by Erik Fryscok on AI-assisted software engineering, agent evaluations, local and open-weight model experiments, developer tooling, and engineering leadership.",
     pageType: "website",
   },
   {
@@ -59,7 +59,7 @@ const pages = [
     file: "dist/projects/index.html",
     title: "Projects — Erik Fryscok",
     description:
-      "Selected projects and case studies from Erik Fryscok on practical engineering, delivery systems, AI-enabled development, and modern infrastructure.",
+      "Selected AI and software engineering projects from Erik Fryscok, including the experimental Local AI Lab, Agent Skills, and evidence-based developer tooling.",
     pageType: "website",
   },
   {
@@ -80,11 +80,20 @@ const pages = [
     pageType: "article",
   },
   {
+    path: "/projects/local-ai-lab",
+    file: "dist/projects/local-ai-lab/index.html",
+    title: "Local AI Lab — Experimental AI Project",
+    heading: "Local AI Lab",
+    description:
+      "How Erik Fryscok uses Local AI Lab to learn about local-model routing, lifecycle, compatibility, evaluation, and the boundary between local and frontier AI.",
+    pageType: "article",
+  },
+  {
     path: "/contact",
     file: "dist/contact/index.html",
     title: "Contact — Erik Fryscok",
     description:
-      "Contact Erik Fryscok about software engineering leadership, AI-enabled development, collaboration, and new opportunities.",
+      "Contact Erik Fryscok about hands-on AI/software engineering, engineering leadership, agent systems, evaluations, model selection, and developer tooling.",
     pageType: "website",
   },
 ];
