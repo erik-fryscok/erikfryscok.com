@@ -30,7 +30,7 @@ test("Local AI Lab leads Projects with calibrated framing and working project li
   assert.ok(agentSkillsPosition < websitePosition, "expected Agent Skills before erikfryscok.com");
   assert.match(
     html,
-    /<div><p[^>]*>Experimental AI lab<\/p><article[^>]*><h2[^>]*>Local AI Lab<\/h2>/,
+    /<div><p[^>]*>EXPERIMENTAL<\/p><article[^>]*><h2[^>]*>Local AI Lab<\/h2>/,
   );
   assert.ok(visibleText.includes(projectsIntroduction));
   assert.ok(visibleText.includes(projectDescription));
@@ -57,7 +57,7 @@ test("Local AI Lab documents compatibility, layered evaluation, and bounded use"
   const html = await readBuiltFile("dist/projects/local-ai-lab/index.html");
 
   for (const heading of [
-    "An experimental AI lab",
+    "An experimental AI project",
     "What the lab explores",
     "Where local models are useful",
     "Where they fall short",

@@ -34,7 +34,7 @@ test("Home leads with practical AI systems and ordered, calibrated proof", async
   assert.ok(agentSkillsPosition < codexPosition, "expected Agent Skills before the Codex article");
   assert.match(
     html,
-    /<a href="\/projects\/local-ai-lab" class="[^"]*sm:col-span-2[^"]*"><p[^>]*>Experimental AI lab<\/p><h3[^>]*>Local AI Lab<\/h3>/,
+    /<a href="\/projects\/local-ai-lab" class="[^"]*sm:col-span-2[^"]*"><p[^>]*>EXPERIMENTAL<\/p><h3[^>]*>Local AI Lab<\/h3>/,
   );
   assert.match(html, /href="\/projects\/local-ai-lab"/);
   assert.match(html, /href="\/projects\/agent-skills"/);
