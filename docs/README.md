@@ -16,7 +16,9 @@ This directory is the durable, versioned context for the website. It is written 
 
 ## Implementation plans
 
-- [GitHub issue #42: AI developer website repositioning](superpowers/plans/2026-08-12-ai-developer-repositioning.md) — approved implementation sequence for calibrated AI-developer positioning, an experimental Local AI Lab case study, and supporting-page alignment.
+- [ERI-19: AI Systems Lab site rename](superpowers/plans/2026-08-15-ai-systems-lab-site-rename.md) — canonical naming, route migration, local/cloud provider scope, and stale-reference validation for Home, Writing, Projects, and current positioning.
+
+- [GitHub issue #42: AI developer website repositioning](superpowers/plans/2026-08-12-ai-developer-repositioning.md) — approved implementation sequence for calibrated AI-developer positioning, an experimental case study for the then-named Local AI Lab, and supporting-page alignment.
 
 - [GitHub issue #1: personal website launch](plans/github-issue-1-launch-personal-website.md) — initiative sequencing, dependencies, concurrency, and launch gates.
 
@@ -48,7 +50,7 @@ This directory is the durable, versioned context for the website. It is written 
 
 ## Design records
 
-- [AI developer website repositioning design](superpowers/specs/2026-08-12-ai-developer-repositioning-design.md) — approved identity, evidence order, Local AI Lab boundaries, and validation criteria.
+- [AI developer website repositioning design](superpowers/specs/2026-08-12-ai-developer-repositioning-design.md) — approved identity, evidence order, the then-named Local AI Lab boundaries, and validation criteria.
 
 - [Agent Skills case study design](superpowers/specs/2026-08-09-agent-skills-case-study-design.md) — approved positioning, content architecture, evidence boundaries, public interfaces, and responsive behavior.
 

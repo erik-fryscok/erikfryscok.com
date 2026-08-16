@@ -14,7 +14,7 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 ### Added
 
-- Experimental Local AI Lab case study covering model routing, lifecycle, compatibility testing, evaluation, capability limits, and cloud-model escalation.
+- Experimental AI Systems Lab case study covering model routing, lifecycle, compatibility testing, evaluation, capability limits, and cloud-model escalation.
 - Agent Skills leading project card, evidence-first case study, and CLI guidance for the `github-public-readiness` skill (issue #40).
 - Flagship case study for erikfryscok.com, covering its static-site architecture, delivery workflow, custom domain, and domain email setup (issue #36).
 - Focused `/now` page with current professional and personal priorities, linked from the main navigation (issue #35).
@@ -36,8 +36,9 @@ The site may deploy continuously. This changelog records meaningful product rele
 
 ### Changed
 
+- Renamed Local AI Lab to AI Systems Lab across Home, Writing, Projects, and current positioning; broadened its stated scope to include local and cloud-hosted providers while preserving its experimental, non-production boundaries (ERI-19).
 - Repositioned the website around hands-on AI systems for software development.
-- Replaced generic Home links with Local AI Lab, Agent Skills, and Codex proof points.
-- Clarified that Local AI Lab is a learning and evaluation environment rather than a production solution or frontier-model replacement.
+- Replaced generic Home links with AI Systems Lab, Agent Skills, and Codex proof points.
+- Clarified that AI Systems Lab is a learning and evaluation environment rather than a production solution or frontier-model replacement.
 - Established the documentation and project-lifecycle foundation for the site.
 - Added Astro, TypeScript, and Tailwind CSS foundation (issue #2).

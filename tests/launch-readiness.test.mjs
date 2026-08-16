@@ -27,7 +27,7 @@ const pages = [
     file: "dist/now/index.html",
     title: "Now — Erik Fryscok",
     description:
-      "What Erik Fryscok is focused on now: AI developer systems, local-model experiments, agent workflows, guitar, and local cycling.",
+      "What Erik Fryscok is focused on now: AI developer systems, AI Systems Lab, agent workflows, guitar, and local cycling.",
     pageType: "website",
   },
   {
@@ -155,6 +155,15 @@ test("each public route emits unique, production-ready metadata", async () => {
 
   assert.equal(titles.size, pages.length, "page titles must be unique");
   assert.equal(descriptions.size, pages.length, "page descriptions must be unique");
+});
+
+test("current public pages do not expose the former project name or route", async () => {
+  const currentPages = pages.map(({ file }) => file);
+
+  for (const file of currentPages) {
+    const html = await readBuiltFile(file);
+    assert.doesNotMatch(html, /Local AI Lab|\/projects\/local-ai-lab/i, file);
+  }
 });
 
 test("built internal links resolve to generated pages or assets", async () => {
