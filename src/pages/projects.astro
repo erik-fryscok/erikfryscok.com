@@ -19,19 +19,19 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Local AI Lab",
+    title: "AI Systems Lab",
     supportingLabel: "EXPERIMENTAL",
     description:
-      "An experimental learning and evaluation environment for local and open-weight models, exploring routing, model lifecycle, compatibility, benchmarks, and the boundary between useful local work and tasks that still require frontier cloud models.",
+      "An experimental learning and evaluation environment for AI model systems, exploring provider-neutral routing, model lifecycle, compatibility, benchmarks, and local llama.cpp and cloud-hosted OpenAI-compatible capability boundaries.",
     technologies: ["Python", "llama.cpp", "OpenAI-compatible APIs", "Hugging Face", "JSONL"],
     outcomes: [
-      "One endpoint with workload-specific model aliases and managed model lifecycle",
+      "Workload-specific model aliases across local llama.cpp and cloud-hosted OpenAI-compatible provider backends",
       "Compatibility gates for visible completions and structured tool calls",
       "Layered throughput, server-path, and quality evaluation workflows",
     ],
     links: [
-      { label: "Read case study", href: "/projects/local-ai-lab", external: false },
-      { label: "Source", href: "https://github.com/erik-fryscok/local-ai-lab", external: true },
+      { label: "Read case study", href: "/projects/ai-systems-lab", external: false },
+      { label: "Source", href: "https://github.com/erik-fryscok/ai-systems-lab", external: true },
     ],
   },
   {
@@ -69,13 +69,13 @@ const projects: Project[] = [
 
 <BaseLayout
   title="Projects — Erik Fryscok"
-  description="Selected AI and software engineering projects from Erik Fryscok, including the experimental Local AI Lab, Agent Skills, and evidence-based developer tooling."
+  description="Selected AI and software engineering projects from Erik Fryscok, including the experimental AI Systems Lab, Agent Skills, and evidence-based developer tooling."
 >
   <div class="max-w-4xl mx-auto">
     <h1 class="text-3xl font-bold mb-3">Projects</h1>
     <p class="text-gray-700 mb-10 max-w-2xl">
       Selected projects showing how I build, test, and reason about AI developer
-      systems. Local AI Lab is an experimental learning environment; Agent
+      systems. AI Systems Lab is an experimental learning environment; Agent
       Skills is the more directly reusable developer workflow project.
     </p>
 

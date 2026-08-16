@@ -4,6 +4,9 @@ import tailwind from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://erikfryscok.com',
+  redirects: {
+    '/projects/local-ai-lab': '/projects/ai-systems-lab',
+  },
   integrations: [
     sitemap({
       filter: (page) => {
