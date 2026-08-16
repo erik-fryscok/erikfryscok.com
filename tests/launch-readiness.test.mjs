@@ -27,7 +27,7 @@ const pages = [
     file: "dist/now/index.html",
     title: "Now — Erik Fryscok",
     description:
-      "What Erik Fryscok is focused on now: AI developer systems, local-model experiments, agent workflows, guitar, and local cycling.",
+      "What Erik Fryscok is focused on now: AI developer systems, AI Systems Lab, agent workflows, guitar, and local cycling.",
     pageType: "website",
   },
   {
@@ -35,7 +35,7 @@ const pages = [
     file: "dist/writing/index.html",
     title: "Writing — Erik Fryscok",
     description:
-      "Articles by Erik Fryscok on AI-assisted software engineering, agent evaluations, local and open-weight model experiments, developer tooling, and engineering leadership.",
+      "Articles by Erik Fryscok on AI-assisted software engineering, agent evaluations, local and cloud model systems, developer tooling, and engineering leadership.",
     pageType: "website",
   },
   {
@@ -59,7 +59,7 @@ const pages = [
     file: "dist/projects/index.html",
     title: "Projects — Erik Fryscok",
     description:
-      "Selected AI and software engineering projects from Erik Fryscok, including the experimental Local AI Lab, Agent Skills, and evidence-based developer tooling.",
+      "Selected AI and software engineering projects from Erik Fryscok, including the experimental AI Systems Lab, Agent Skills, and evidence-based developer tooling.",
     pageType: "website",
   },
   {
@@ -80,12 +80,12 @@ const pages = [
     pageType: "article",
   },
   {
-    path: "/projects/local-ai-lab",
-    file: "dist/projects/local-ai-lab/index.html",
-    title: "Local AI Lab — Experimental AI Project",
-    heading: "Local AI Lab",
+    path: "/projects/ai-systems-lab",
+    file: "dist/projects/ai-systems-lab/index.html",
+    title: "AI Systems Lab — Experimental AI Project",
+    heading: "AI Systems Lab",
     description:
-      "How Erik Fryscok uses Local AI Lab to learn about local-model routing, lifecycle, compatibility, evaluation, and the boundary between local and frontier AI.",
+      "How Erik Fryscok uses AI Systems Lab to explore provider-neutral model routing, lifecycle, compatibility, evaluation, and local and cloud AI boundaries.",
     pageType: "article",
   },
   {
@@ -157,6 +157,15 @@ test("each public route emits unique, production-ready metadata", async () => {
   assert.equal(descriptions.size, pages.length, "page descriptions must be unique");
 });
 
+test("current public pages do not expose the former project name or route", async () => {
+  const currentPages = pages.map(({ file }) => file);
+
+  for (const file of currentPages) {
+    const html = await readBuiltFile(file);
+    assert.doesNotMatch(html, /Local AI Lab|\/projects\/local-ai-lab/i, file);
+  }
+});
+
 test("built internal links resolve to generated pages or assets", async () => {
   for (const page of pages) {
     const html = await readBuiltFile(page.file);
@@ -175,6 +184,20 @@ test("built internal links resolve to generated pages or assets", async () => {
   }
 });
 
+test("the former AI lab route redirects to the renamed canonical case study", async () => {
+  const html = await readBuiltFile("dist/projects/local-ai-lab/index.html");
+
+  assert.match(
+    html,
+    /<meta http-equiv="refresh" content="0;url=\/projects\/ai-systems-lab">/,
+  );
+  assert.match(html, /<meta name="robots" content="noindex">/);
+  assert.match(
+    html,
+    /<link rel="canonical" href="https:\/\/erikfryscok\.com\/projects\/ai-systems-lab\/?">/,
+  );
+});
+
 test("the generated sitemap contains every indexable public URL and excludes 404", async () => {
   assert.equal(await fileExists("dist/sitemap-index.xml"), true, "expected sitemap index");
 
@@ -187,6 +210,7 @@ test("the generated sitemap contains every indexable public URL and excludes 404
   for (const page of pages) {
     assert.match(sitemap, new RegExp(`<loc>${canonicalURL(page.path)}</loc>`));
   }
+  assert.doesNotMatch(sitemap, /<loc>https:\/\/erikfryscok\.com\/projects\/local-ai-lab\/?<\/loc>/);
   assert.doesNotMatch(sitemap, /<loc>https:\/\/erikfryscok\.com\/404\/?<\/loc>/);
 });
 

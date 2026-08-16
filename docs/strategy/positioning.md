@@ -1,6 +1,6 @@
 # Personal Direction and Positioning
 
-Last updated: 2026-08-12
+Last updated: 2026-08-15
 
 ## Working positioning
 
@@ -10,10 +10,10 @@ The public narrative is organized around four durable themes:
 
 1. **AI-assisted engineering** — coding agents, developer workflows, and tooling that improve software-development work.
 2. **Evaluations and reliability** — evidence, compatibility checks, layered evaluation, and honest limits before promotion.
-3. **Local and open-weight experimentation** — bounded experiments that identify where smaller models are useful and where they fall short.
+3. **Model-system experimentation** — provider-neutral routing and evaluation across local, open-weight, and cloud-hosted models, with explicit workload and capability boundaries.
 4. **AI engineering leadership** — maintainable systems and team outcomes informed by hands-on engineering and leadership experience.
 
-Local AI Lab and Agent Skills play different proof roles. Local AI Lab is an experimental learning and evaluation environment for local and open-weight models, not a production solution or a claim of model superiority. Agent Skills is the more directly reusable developer-workflow project. When a task exceeds the lab's demonstrated capability, reliability, or risk boundary, the appropriate path is escalation to a frontier cloud model.
+AI Systems Lab and Agent Skills play different proof roles. AI Systems Lab is an experimental learning and evaluation environment for model systems across local and cloud-hosted providers, not a production solution or a claim of model superiority. Local execution remains a first-class use case, while provider-neutral routing and evaluation keep core workflows independent of any one runtime or vendor. Agent Skills is the more directly reusable developer-workflow project. When a task exceeds a model's demonstrated capability, reliability, or risk boundary, the appropriate path is routing or escalation to a better-supported model/provider.
 
 ## Audience
 

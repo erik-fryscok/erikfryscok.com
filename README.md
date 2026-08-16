@@ -1,5 +1,5 @@
 # erikfryscok.com
-Personal website and technical portfolio focused on AI systems for software development, including coding agents, evaluations, local-model experiments, developer tooling, and engineering leadership.
+Personal website and technical portfolio focused on AI systems for software development, including coding agents, evaluations, local and cloud model systems, developer tooling, and engineering leadership.
 
 ## Current focus
 
