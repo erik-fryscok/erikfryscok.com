@@ -35,7 +35,7 @@ const pages = [
     file: "dist/writing/index.html",
     title: "Writing — Erik Fryscok",
     description:
-      "Articles by Erik Fryscok on AI-assisted software engineering, agent evaluations, local and open-weight model experiments, developer tooling, and engineering leadership.",
+      "Articles by Erik Fryscok on AI-assisted software engineering, agent evaluations, local and cloud model systems, developer tooling, and engineering leadership.",
     pageType: "website",
   },
   {

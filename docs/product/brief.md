@@ -18,7 +18,7 @@ Create a professional home base that explains who Erik is, demonstrates useful t
 
 **Supporting copy**
 
-> I’m a software development team lead and hands-on engineer working with coding agents, local and open-weight models, developer tooling, evaluations, cloud infrastructure, and the systems that help engineering teams ship better software.
+> I’m a software development team lead and hands-on engineer working with coding agents, local and cloud-hosted models, developer tooling, evaluations, cloud infrastructure, and the systems that help engineering teams ship better software.
 
 ## First release scope
 
